@@ -39,3 +39,15 @@ logs/
 # ComfyUI outputs (if applicable)
 output/
 temp/
+
+# Model files (large binary files)
+models/**/*.safetensors
+models/**/*.ckpt
+models/**/*.pt
+models/**/*.pth
+models/**/*.bin
+models/**/*.onnx
+models/**/*.pb
+
+# Keep directory structure but ignore model files
+!models/**/.gitkeep
