@@ -1,0 +1,106 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "flux_dev.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint - Flux Dev"
+    }
+  },
+  "2": {
+    "inputs": {
+      "lora_name": "ultrafluxV1.aWjp.safetensors",
+      "strength_model": 0.8,
+      "strength_clip": 0.8,
+      "model": ["1", 0],
+      "clip": ["1", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "LoRA 1 - Ultra Flux"
+    }
+  },
+  "3": {
+    "inputs": {
+      "lora_name": "facebookQuality.3t4R.safetensors",
+      "strength_model": 0.6,
+      "strength_clip": 0.6,
+      "model": ["2", 0],
+      "clip": ["2", 1]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "LoRA 2 - Quality Boost"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "masterpiece, best quality, highly detailed, 8k uhd, professional photography, stunning composition, vibrant colors, perfect lighting",
+      "clip": ["3", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "blurry, low quality, worst quality, simple, amateur, boring",
+      "clip": ["3", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "6": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "7": {
+    "inputs": {
+      "seed": 42,
+      "steps": 30,
+      "cfg": 4.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": ["3", 0],
+      "positive": ["4", 0],
+      "negative": ["5", 0],
+      "latent_image": ["6", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler - High Quality"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": ["7", 0],
+      "vae": ["1", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "flux_quality_stack",
+      "images": ["8", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

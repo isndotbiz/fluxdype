@@ -1,0 +1,13 @@
+# SpiritAtlas - Special Resolution Assets
+# Wordmark and other custom-sized elements
+# Generate as landscape resolution and crop/resize as needed
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_special.txt -Resolution landscape -Quality ultra
+
+# 1.4 Logo Wordmark - "SpiritAtlas"
+A sophisticated typographic logo reading "SpiritAtlas" in elegant modern sans-serif font with cosmic gradient fill. The text has a smooth gradient transitioning from cosmic violet (#6B21A8) on left through mystic purple (#7C3AED) to aurora pink (#EC4899) on right. Subtle ethereal glow effect around letters. Small constellation of tiny stars dotted around the wordmark. Letters have slight spacing adjustments for premium feel. Transparent background. The 'A' in 'Atlas' features a subtle triangle/mountain peak design element integrated into the letter. Premium app branding, mystical gradient text, professional logo design, 4K quality, wide format.
+
+# 2.5 Toggle Switch Track
+A horizontal pill-shaped track for toggle switch showing both states. Left half: inactive state with dark night sky color (#1E1B4B) and subtle transparency. Right half: active state with cosmic gradient from mystic purple (#7C3AED) to stardust blue (#3B82F6). Both halves have soft inner glow. The shape is elongated rounded rectangle (pill shape). Include subtle sparkle particles in active state. Transparent background. Modern UI toggle design, spiritual gradient, glass-morphic style, 4K quality.
+
+# 4.2 Avatar Frame Set - Multiple Sizes
+An ornate circular frame set for profile avatars in various sizes. The frame features intricate sacred geometry patterns - flower of life segments, mandala petals, and mystical symbols. Rendered in gradient from mystic purple (#7C3AED) to sacred gold (#D97706) flowing around the circle. Small gemstone-like points in chakra colors positioned at cardinal points. Inner edge has subtle glow. Center is transparent for avatar photo. Generate at multiple scales for different avatar sizes. Sacred mandala frame, mystical border, spiritual decoration, premium UI element, 4K transparent background.

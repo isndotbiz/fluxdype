@@ -1,53 +1,60 @@
-# Environment variables and secrets
-.env
-.env.local
-.env.*.local
-
-# API keys and credentials
-*.key
-*.pem
-credentials.json
-secrets.json
-
 # Python
+venv/
+venv_*/
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-venv/
-env/
-ENV/
+*.egg-info/
+dist/
+build/
 
-# Node modules
-node_modules/
+# Environment variables
+.env
+.env.local
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# ComfyUI and Models (LARGE FILES)
+ComfyUI/
+models/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+
+# Outputs
+outputs/
+output/
+input/
+
+# Large data
+llama.cpp/
+gguf_conversion/
+
+# Archives
+*.zip
+*.tar.gz
+*.7z
 
 # OS
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+*~
+nul
 
-# Logs
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Archived
+.archived_nodes/
+
+# Temporary
 *.log
-logs/
-
-# ComfyUI outputs (if applicable)
-output/
-temp/
-
-# Model files (large binary files)
-models/**/*.safetensors
-models/**/*.ckpt
-models/**/*.pt
-models/**/*.pth
-models/**/*.bin
-models/**/*.onnx
-models/**/*.pb
-
-# Keep directory structure but ignore model files
-!models/**/.gitkeep
+*.tmp
+*.bak

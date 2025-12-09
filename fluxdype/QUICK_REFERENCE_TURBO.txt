@@ -1,0 +1,119 @@
+================================================================================
+FLUX TURBO - QUICK REFERENCE CARD (RTX 3090)
+================================================================================
+
+🚀 OPTIMAL SPEED SETUP
+================================================================================
+
+Model:     flux1-krea-dev_fp8_scaled.safetensors
+LoRA:      FLUX.1-Turbo-Alpha.safetensors (strength: 1.0)
+Steps:     6
+CFG:       1.5
+Sampler:   Euler
+Scheduler: Simple
+Batch:     4 images
+Resolution: 1024x1024
+
+SPEED:     8-10 seconds per image (4 images in ~30-40 seconds)
+VRAM:      18-20GB
+
+================================================================================
+⚡ SPEED PRESETS
+================================================================================
+
+MAXIMUM SPEED:
+  Steps: 4 | CFG: 1.0 | Batch: 8 | Resolution: 768x768
+  → 3-4 sec/image
+
+BALANCED (RECOMMENDED):
+  Steps: 6 | CFG: 1.5 | Batch: 4 | Resolution: 1024x1024
+  → 8-10 sec/image
+
+BEST QUALITY:
+  Steps: 8 | CFG: 2.0 | Batch: 2 | Resolution: 1024x1024
+  → 10-12 sec/image
+
+================================================================================
+📝 COMMAND LINE EXAMPLES
+================================================================================
+
+# Generate 4 images (1 batch):
+python generate_turbo_batch.py
+
+# Generate 20 images (5 batches of 4):
+python generate_turbo_batch.py --batches 5
+
+# Generate 32 images FAST (4 batches of 8, 768px):
+python generate_turbo_batch.py --batches 4 --batch-size 8 --resolution 768 --steps 4
+
+# Custom prompt:
+python generate_turbo_batch.py --prompt "beautiful woman, elegant style" --batches 3
+
+================================================================================
+⚠️ IMPORTANT TURBO RULES
+================================================================================
+
+✅ DO:
+  - Use LOW CFG (1.0-2.0) - CRITICAL!
+  - Use 4-8 steps
+  - Set LoRA strength 0.8-1.0
+  - Batch 2-8 images for efficiency
+
+❌ DON'T:
+  - Use high CFG (3.5+) - Breaks Turbo!
+  - Use 20+ steps - Wastes time
+  - Use Flux 2.0 Dev for speed - Too slow (61GB model!)
+
+================================================================================
+🎯 WHY FLUX 1 KRIA FP8 (NOT FLUX 2.0)?
+================================================================================
+
+Flux 1 Kria FP8:  12GB, 8-12 sec with Turbo, 99% quality  ✅ FAST
+Flux 2.0 Dev:     61GB, 50-70 sec, 100% quality          ❌ SLOW
+
+Flux 2.0 is 5x the size = 5-8x slower on RTX 3090!
+
+Use Flux 1 Kria FP8 for SPEED, Flux 2.0 for maximum quality only.
+
+================================================================================
+📂 OUTPUT DIRECTORY
+================================================================================
+
+D:\workspace\fluxdype\ComfyUI\output\turbo_batch_*.png
+
+================================================================================
+🌐 WEB INTERFACE
+================================================================================
+
+URL: http://localhost:8188
+Workflow: Load "workflow_turbo_batch_optimized.json"
+
+Set:
+  - Checkpoint: flux1-krea-dev_fp8_scaled.safetensors
+  - LoRA: FLUX.1-Turbo-Alpha.safetensors (1.0 strength)
+  - Empty Latent: batch_size = 4
+  - KSampler: steps=6, cfg=1.5, euler, simple
+
+================================================================================
+🔥 PERFORMANCE COMPARISON
+================================================================================
+
+Configuration          | Time/Image | 100 Images Total
+-----------------------|------------|------------------
+Standard Flux (20 steps)| 30-40 sec | 50-60 minutes
+Turbo 6-step (batch 4) | 8-10 sec  | 12-15 minutes  ⚡
+Turbo 4-step (batch 8) | 3-4 sec   | 6-8 minutes    ⚡⚡
+
+SPEEDUP: 4-10x faster!
+
+================================================================================
+💡 PRO TIP
+================================================================================
+
+Combine with quality LoRAs:
+1. FLUX.1-Turbo-Alpha (1.0) - speed
+2. fluxInstaGirlsV2 (0.6) - style
+
+Result: Fast + Beautiful!
+
+================================================================================

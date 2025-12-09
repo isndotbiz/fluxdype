@@ -1,0 +1,110 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "flux1-dev.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "2": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors"
+    },
+    "class_type": "DualClipLoader"
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader"
+  },
+  "4": {
+    "inputs": {
+      "lora_name": "turbo-lora.safetensors",
+      "strength_model": 0.85,
+      "strength_clip": 0.85
+    },
+    "class_type": "LoraLoader"
+  },
+  "5": {
+    "inputs": {
+      "text": "high quality photorealistic portrait, detailed face, natural lighting, professional photography, 8k, masterpiece"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "6": {
+    "inputs": {
+      "text": "blurry, low quality, distorted, bad anatomy, watermark, text"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "8": {
+    "inputs": {
+      "seed": 0,
+      "steps": 20,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "9": {
+    "inputs": {
+      "rel_l1_thresh": 0.3,
+      "use_cache": true,
+      "samples": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "TeaCacheNode"
+  },
+  "10": {
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "Flux_Fast_Quality",
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  }
+}

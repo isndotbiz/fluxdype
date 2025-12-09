@@ -1,0 +1,39 @@
+# SpiritAtlas - Zodiac Constellation Art (400x400 each)
+# 12 zodiac constellation artworks
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_zodiac.txt -Resolution square -Quality high
+
+# Aries (Fire)
+A mystical constellation artwork for Aries. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in orange (#F97316) for fire element. The Aries glyph symbol appears subtly in corner in matching orange. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of ram with curved horns. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Taurus (Earth)
+A mystical constellation artwork for Taurus. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in green (#22C55E) for earth element. The Taurus glyph symbol appears subtly in corner in matching green. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of bull with horns. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Gemini (Air)
+A mystical constellation artwork for Gemini. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in cyan (#06B6D4) for air element. The Gemini glyph symbol appears subtly in corner in matching cyan. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of twins figures side by side. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Cancer (Water)
+A mystical constellation artwork for Cancer. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in teal (#14B8A6) for water element. The Cancer glyph symbol appears subtly in corner in matching teal. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of crab with claws. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Leo (Fire)
+A mystical constellation artwork for Leo. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in orange (#F97316) for fire element. The Leo glyph symbol appears subtly in corner in matching orange. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of lion with mane. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Virgo (Earth)
+A mystical constellation artwork for Virgo. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in green (#22C55E) for earth element. The Virgo glyph symbol appears subtly in corner in matching green. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of maiden holding wheat. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Libra (Air)
+A mystical constellation artwork for Libra. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in cyan (#06B6D4) for air element. The Libra glyph symbol appears subtly in corner in matching cyan. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of scales in balance. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Scorpio (Water)
+A mystical constellation artwork for Scorpio. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in teal (#14B8A6) for water element. The Scorpio glyph symbol appears subtly in corner in matching teal. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of scorpion with curved tail. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Sagittarius (Fire)
+A mystical constellation artwork for Sagittarius. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in orange (#F97316) for fire element. The Sagittarius glyph symbol appears subtly in corner in matching orange. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of archer with bow and arrow. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Capricorn (Earth)
+A mystical constellation artwork for Capricorn. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in green (#22C55E) for earth element. The Capricorn glyph symbol appears subtly in corner in matching green. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of goat with fish tail. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Aquarius (Air)
+A mystical constellation artwork for Aquarius. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in cyan (#06B6D4) for air element. The Aquarius glyph symbol appears subtly in corner in matching cyan. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of water bearer pouring water. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.
+
+# Pisces (Water)
+A mystical constellation artwork for Pisces. The constellation pattern in glowing stardust blue (#3B82F6) stars connected by ethereal golden lines (#D97706). The stars vary in size and brightness creating depth. Around the constellation, subtle cosmic nebula in teal (#14B8A6) for water element. The Pisces glyph symbol appears subtly in corner in matching teal. Deep space cosmic background with night sky gradient (#1E1B4B). The constellation forms recognizable shape of two fish swimming in opposite directions connected by cord. Astrological art, cosmic constellation, zodiac symbolism, celestial map, 4K square format.

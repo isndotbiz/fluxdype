@@ -1,9 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(gh repo create:*)"
+      "Bash(powershell -Command:*)"
     ],
     "deny": [],
     "ask": []

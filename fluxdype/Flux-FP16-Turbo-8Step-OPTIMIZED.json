@@ -1,0 +1,149 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "fluxedUpFluxNSFW_60FP16_2250122.safetensors",
+      "weight_dtype": "fp16"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Flux Dev FP16 (22GB)"
+    }
+  },
+  "2": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp16.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "Load CLIP Encoders"
+    }
+  },
+  "3": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "4": {
+    "inputs": {
+      "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+      "strength_model": 0.85,
+      "strength_clip": 0.85,
+      "model": ["1", 0],
+      "clip": ["2", 0]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Turbo LoRA (0.85 strength)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "portrait of a beautiful woman, professional photography, studio lighting, detailed face, 8k, photorealistic",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "6": {
+    "inputs": {
+      "guidance": 3.0,
+      "conditioning": ["5", 0]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "CFG: 3.0 (Turbo)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "1024x1024 Latent"
+    }
+  },
+  "8": {
+    "inputs": {
+      "noise_seed": 0
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "Random Seed"
+    }
+  },
+  "9": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "Euler Sampler"
+    }
+  },
+  "10": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 8,
+      "denoise": 1.0,
+      "model": ["4", 0]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "8 Steps - Beta Scheduler"
+    }
+  },
+  "11": {
+    "inputs": {
+      "model": ["4", 0],
+      "conditioning": ["6", 0]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "Guider"
+    }
+  },
+  "12": {
+    "inputs": {
+      "noise": ["8", 0],
+      "guider": ["11", 0],
+      "sampler": ["9", 0],
+      "sigmas": ["10", 0],
+      "latent_image": ["7", 0]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "Sampler"
+    }
+  },
+  "13": {
+    "inputs": {
+      "samples": ["12", 0],
+      "vae": ["3", 0]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "14": {
+    "inputs": {
+      "filename_prefix": "Flux_FP16_Turbo_8Step",
+      "images": ["13", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

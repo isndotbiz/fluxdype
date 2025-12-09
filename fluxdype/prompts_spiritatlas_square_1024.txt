@@ -1,0 +1,18 @@
+# SpiritAtlas - Square 1024x1024 Assets
+# High-resolution icons and primary assets
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_square_1024.txt -Resolution square -Quality ultra
+
+# 1.1 Primary App Icon
+A sophisticated app icon featuring a minimalist sacred geometry design: a glowing purple lotus flower with seven chakra-colored petals arranged in perfect symmetry, centered on a deep cosmic gradient background transitioning from midnight indigo (#1E1B4B) to mystic violet (#7C3AED). The lotus has subtle golden sacred geometry lines (#D97706) connecting petal points. Small twinkling stars scattered in the background. The icon has soft ethereal glow effects around the lotus center. Ultra-modern, clean, professional app icon design with rounded square format. Gradient mapping, volumetric lighting, mystical atmosphere, 4K quality, sharp details.
+
+# 5.2 Flower of Life - Sacred Geometry
+The complete Flower of Life sacred geometry pattern. Perfect circles overlapping to create the classic flower of life formation with 19 complete circles and partial circles forming the pattern. Rendered in glowing sacred gold (#D97706) lines on deep cosmic background (#1E1B4B). The lines have ethereal glow effect making them luminous. Perfect geometric precision - all circles must be perfectly aligned. The pattern represents creation and divine geometry. Sacred geometry art, mystical symbol, spiritual iconography, mathematical precision, golden ratio, 4K quality.
+
+# 5.3 Metatron's Cube - Sacred Geometry
+Metatron's Cube sacred geometry pattern - the complete formation showing the 13 circles of the fruit of life with all connecting lines forming the platonic solids. Rendered in mystic purple (#7C3AED) with sacred gold (#D97706) accent lines highlighting the inner structure. The geometry glows with ethereal light. Perfect symmetry and mathematical precision. On subtle cosmic gradient background. The pattern represents the building blocks of the universe and divine creation. Sacred geometry, spiritual mathematics, mystical symbol, Kabbalah, premium spiritual art, 4K quality.
+
+# 5.7 Yin Yang - Cosmic Edition
+A cosmic interpretation of the yin yang symbol. The classic circular yin yang design where the Yang (light) half is filled with cosmic purple starfield (#7C3AED background with stars and nebula) and the Yin (dark) half is filled with deep space (#1E1B4B with distant galaxies). The dividing line flows perfectly in traditional S-curve. Each half contains the opposite's dot (small circle) - purple dot in dark half, dark dot in purple half. Subtle sacred gold (#D97706) outline around entire circle. Both halves have ethereal glow at the boundary. Perfect symmetry and balance. Sacred symbol of duality, cosmic yin yang, spiritual balance, tantric symbolism, 4K quality.
+
+# 5.8 Om Symbol - Glowing Sacred
+The sacred Om (ॐ) symbol in Sanskrit, rendered in luminous sacred gold (#D97706). The symbol glows with ethereal golden light radiating outward in concentric circles. The Om is drawn with perfect traditional calligraphic form. Surrounding the symbol is a subtle mandala pattern in mystic purple (#7C3AED) at low opacity forming circular design. Background is deep cosmic gradient from night sky (#1E1B4B) to cosmic violet (#6B21A8). Small golden light particles floating around the Om. The symbol represents the primordial sound of the universe. Sacred Sanskrit, Hindu spiritual symbol, meditation icon, cosmic Om, divine sound, 4K quality.
