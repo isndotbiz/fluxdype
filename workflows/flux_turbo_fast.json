@@ -1,0 +1,127 @@
+{
+  "workflow_info": {
+    "name": "Flux Turbo Fast Generator",
+    "description": "Ultra-fast image generation with Flux Turbo LoRA optimized for RTX 3090",
+    "version": "1.0",
+    "resolution": "1024x1024 (square)",
+    "optimized_for": "fast_generation",
+    "quality_level": "high_speed",
+    "inference_time_seconds": "3-5",
+    "steps": 8,
+    "cfg": 1.5
+  },
+  "prompt": {
+    "1": {
+      "inputs": {
+        "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "class_type": "UNETLoader",
+      "_meta": {
+        "title": "Load Flux Kria FP8 UNET"
+      }
+    },
+    "2": {
+      "inputs": {
+        "clip_name1": "clip_l.safetensors",
+        "clip_name2": "t5xxl_fp16.safetensors",
+        "type": "flux"
+      },
+      "class_type": "DualCLIPLoader",
+      "_meta": {
+        "title": "Load CLIP L + T5XXL Text Encoders"
+      }
+    },
+    "3": {
+      "inputs": {
+        "vae_name": "ae.safetensors"
+      },
+      "class_type": "VAELoader",
+      "_meta": {
+        "title": "Load VAE Encoder"
+      }
+    },
+    "4": {
+      "inputs": {
+        "text": "stunning photography, professional lighting, sharp focus, highly detailed, vibrant colors, masterpiece, best quality, cinematic composition",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Positive Prompt"
+      }
+    },
+    "5": {
+      "inputs": {
+        "text": "low quality, blurry, distorted, deformed, bad anatomy, watermark, text, logo",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Negative Prompt"
+      }
+    },
+    "6": {
+      "inputs": {
+        "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+        "strength_model": 0.8,
+        "strength_clip": 0.8,
+        "model": ["1", 0],
+        "clip": ["2", 0]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Turbo LoRA - 0.8 Strength"
+      }
+    },
+    "7": {
+      "inputs": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      },
+      "class_type": "EmptyLatentImage",
+      "_meta": {
+        "title": "Initialize Latent Space (1024x1024)"
+      }
+    },
+    "8": {
+      "inputs": {
+        "seed": 0,
+        "steps": 8,
+        "cfg": 1.5,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1.0,
+        "model": ["6", 0],
+        "positive": ["4", 0],
+        "negative": ["5", 0],
+        "latent_image": ["7", 0]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "Turbo Sampler - 8 Steps, CFG 1.5"
+      }
+    },
+    "9": {
+      "inputs": {
+        "samples": ["8", 0],
+        "vae": ["3", 0]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode to Image"
+      }
+    },
+    "10": {
+      "inputs": {
+        "filename_prefix": "flux_turbo_",
+        "images": ["9", 0]
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Generated Image"
+      }
+    }
+  }
+}

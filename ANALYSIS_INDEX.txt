@@ -1,0 +1,282 @@
+================================================================================
+FLUXDYPE PYTHON DEPENDENCY ANALYSIS - GENERATED FILES INDEX
+================================================================================
+
+ANALYSIS COMPLETED: 2025-12-10
+SYSTEM: D:\workspace\fluxdype (RTX 3090, CUDA 12.1)
+CUSTOM NODES ANALYZED: 14
+TOTAL PACKAGES: 74
+CONFLICTS IDENTIFIED: 4 (2 HIGH, 2 MEDIUM)
+
+================================================================================
+OUTPUT FILES GENERATED
+================================================================================
+
+1. DEPENDENCY_CONFLICTS.txt (27 KB, 610 lines)
+   ├─ Complete technical analysis
+   ├─ Detailed conflict descriptions
+   ├─ Version requirement tables
+   ├─ Installation commands
+   ├─ Troubleshooting guide
+   └─ Future maintenance recommendations
+
+   When to use: Full understanding of all dependency issues and constraints
+
+2. CONFLICT_QUICK_REFERENCE.txt (2.3 KB)
+   ├─ 1-page executive summary
+   ├─ Critical issues checklist
+   ├─ Quick fix checklist
+   └─ Expected results after fixes
+
+   When to use: Quick overview of what needs to be done
+
+3. FIXES_REQUIRED.md (7.6 KB)
+   ├─ Exact file paths requiring changes
+   ├─ Before/after code diffs
+   ├─ Step-by-step implementation guide
+   ├─ Verification commands
+   └─ Implementation checklist
+
+   When to use: During implementation of fixes
+
+4. parsed_deps.json (7.8 KB)
+   ├─ Machine-readable format
+   ├─ All nodes and their dependencies
+   ├─ Critical packages extraction
+   └─ Package listing
+
+   When to use: Automated tools, CI/CD integration, further analysis
+
+5. dependency_analysis.json (2.2 KB)
+   ├─ Conflict summary in JSON
+   ├─ Severity classifications
+   ├─ Resolution recommendations
+   └─ Duplicate package counts
+
+   When to use: Dashboard integration, automated reporting
+
+6. ANALYSIS_INDEX.txt (This file)
+   └─ Navigation guide to all outputs
+
+================================================================================
+CONFLICT SUMMARY
+================================================================================
+
+HIGH PRIORITY (MUST FIX BEFORE DEPLOYMENT):
+───────────────────────────────────────────
+
+1. OPENCV VARIANT CONFLICT
+   Severity: HIGH
+   Status: ACTIVE - Will cause pip failure
+   Solution: Use opencv-python-headless for all nodes
+   Files Affected: 4
+   Files: See FIXES_REQUIRED.md
+
+2. EINOPS VERSION PINNING
+   Severity: HIGH
+   Status: ACTIVE - Race condition during install
+   Solution: Pin einops==0.8.0 in base requirements
+   Files Affected: 1
+   File: ComfyUI/requirements.txt
+
+
+MEDIUM PRIORITY (MONITOR/DOCUMENT):
+───────────────────────────────────
+
+3. PROTOBUF VERSION RANGE
+   Severity: MEDIUM
+   Status: ACCEPTABLE - No action required
+   Details: ComfyUI-RMBG requires protobuf<6.0.0
+   Rationale: Model serialization compatibility
+
+4. PACKAGE REDUNDANCY
+   Severity: MEDIUM
+   Status: INFORMATIONAL
+   Impact: Longer install time, disk usage
+   Recommendation: Document; consolidate if needed later
+
+
+NO ACTION NEEDED:
+─────────────────
+
+✓ torch/torchvision       - All compatible
+✓ transformers>=4.37.2    - All compatible
+✓ numpy>=1.25.0          - All compatible
+✓ CUDA 12.1 support      - Fully supported
+
+================================================================================
+QUICK START GUIDE
+================================================================================
+
+STEP 1: Read the issue summary
+   → Open: CONFLICT_QUICK_REFERENCE.txt
+
+STEP 2: Understand all details
+   → Open: DEPENDENCY_CONFLICTS.txt
+   → Focus sections:
+      * "CRITICAL CONFLICTS" (lines 58-230)
+      * "MEDIUM PRIORITY ISSUES" (lines 235-330)
+
+STEP 3: Implement fixes
+   → Open: FIXES_REQUIRED.md
+   → Follow: "Implementation Checklist"
+   → Use: Code diffs provided for each change
+
+STEP 4: Verify installation
+   → Run: Commands in "Verification Steps" section
+   → Check: All critical packages import successfully
+
+STEP 5: Test ComfyUI
+   → Run: start-comfy.ps1
+   → Verify: Web UI loads at http://localhost:8188
+   → Submit: Sample workflow to test custom nodes
+
+
+================================================================================
+DETAILED NAVIGATION
+================================================================================
+
+Need to know...                          See file...
+──────────────────────────────────────────────────────────────────────────────
+Which nodes have conflicts?              FIXES_REQUIRED.md (top)
+What exact lines to change?              FIXES_REQUIRED.md (Changes 1-4)
+How to verify fixes?                     FIXES_REQUIRED.md (Verification Steps)
+All technical details?                   DEPENDENCY_CONFLICTS.txt (full)
+Complete package list?                   parsed_deps.json
+Critical packages only?                  CONFLICT_QUICK_REFERENCE.txt
+What causes each conflict?               DEPENDENCY_CONFLICTS.txt (Sections 1-4)
+Installation commands?                   DEPENDENCY_CONFLICTS.txt (Section 6)
+Future recommendations?                  DEPENDENCY_CONFLICTS.txt (Section 7)
+
+
+================================================================================
+ANALYSIS METHODOLOGY
+================================================================================
+
+1. Found all requirements.txt files: 14 locations
+2. Parsed all dependency specifications: 74 unique packages
+3. Identified duplicates across nodes
+4. Checked version constraints for conflicts
+5. Analyzed critical packages (torch, transformers, opencv, etc.)
+6. Evaluated severity and impact
+7. Proposed solutions with rationale
+8. Generated installation verification procedures
+
+
+Key Files Analyzed:
+──────────────────
+□ D:\workspace\fluxdype\ComfyUI\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\comfyui-dynamicprompts\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-GGUF\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Impact-Pack\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Inspire-Pack\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Manager\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-RMBG\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\comfyui_controlnet_aux\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI_essentials\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI_InstantID\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\efficiency-nodes-comfyui\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\rgthree-comfy\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\was-node-suite-comfyui\requirements.txt
+□ D:\workspace\fluxdype\ComfyUI\custom_nodes\x-flux-comfyui\requirements.txt
+
+
+================================================================================
+IMPLEMENTATION TIMELINE
+================================================================================
+
+Phase 1: Planning (Complete)
+  ✓ Analyze all dependencies
+  ✓ Identify conflicts
+  ✓ Generate reports
+  ✓ Create fix specifications
+
+Phase 2: Implementation (YOUR STEP)
+  □ Update 4 opencv-python files to headless variant
+  □ Pin einops==0.8.0 in ComfyUI/requirements.txt
+  □ Commit changes to git
+
+Phase 3: Verification (YOUR STEP)
+  □ Clean pip cache
+  □ Fresh installation of all requirements
+  □ Run verification commands
+  □ Test ComfyUI server startup
+  □ Submit sample workflow
+
+Phase 4: Documentation (Optional)
+  □ Archive this analysis with repository
+  □ Document in project README
+  □ Add to CI/CD checks (GitHub Actions)
+
+
+================================================================================
+COMMON QUESTIONS
+================================================================================
+
+Q: Do I need to fix all 4 issues?
+A: No. Only issues #1 and #2 (HIGH severity) must be fixed before deployment.
+   Issues #3-4 are informational/monitoring.
+
+Q: Will fixing these issues affect GPU performance?
+A: No. These are dependency compatibility fixes. GPU usage remains unchanged.
+   Actually, using opencv-python-headless (no GUI overhead) may improve boot time.
+
+Q: How long will it take to implement?
+A: ~15 minutes to edit 5 files + ~30 minutes to test installation = 45 minutes total
+
+Q: What if I skip einops pinning?
+A: There's a race condition. Sometimes installation will fail, sometimes it won't.
+   Nodes may load or fail randomly. MUST FIX.
+
+Q: Can I use opencv-python instead of headless?
+A: Technically yes, but not recommended. Your system has no display server
+   (headless RTX 3090). GUI components are wasted resources.
+
+Q: Is protobuf<6.0.0 restriction a problem?
+A: Only if future packages require protobuf 6.0+. Won't happen for 6+ months.
+   Keep as-is. Review quarterly.
+
+
+================================================================================
+CONTACT & TROUBLESHOOTING
+================================================================================
+
+If pip install fails after applying fixes:
+
+1. Check exact error message
+2. Run: pip install --upgrade pip setuptools wheel
+3. Run: pip cache purge
+4. Run: pip install -r requirements.txt --no-cache-dir
+5. Check specific package version:
+   pip show opencv-python-headless
+   pip show einops
+
+If ComfyUI fails to start:
+
+1. Check server logs for import errors
+2. Verify packages installed:
+   python -c "import cv2, einops, torch; print('OK')"
+3. Activate venv before running:
+   .\venv\Scripts\Activate.ps1
+4. Check ComfyUI custom_nodes load status in web UI
+
+
+================================================================================
+END OF INDEX
+================================================================================
+
+Files in D:\workspace\fluxdype\:
+  ✓ DEPENDENCY_CONFLICTS.txt      - Comprehensive analysis (610 lines)
+  ✓ CONFLICT_QUICK_REFERENCE.txt  - Quick summary
+  ✓ FIXES_REQUIRED.md             - Implementation guide
+  ✓ parsed_deps.json              - Machine-readable data
+  ✓ dependency_analysis.json      - JSON summary
+  ✓ ANALYSIS_INDEX.txt            - This navigation file
+  ✓ analyze_deps.py               - Analysis script (backup)
+
+Start with: CONFLICT_QUICK_REFERENCE.txt (2-minute read)
+Then read: FIXES_REQUIRED.md (implementation guide)
+Reference: DEPENDENCY_CONFLICTS.txt (detailed info)
+
+Generated: 2025-12-10

@@ -1,0 +1,78 @@
+{
+  "issues": [
+    {
+      "name": "OpenCV Variant Conflict",
+      "severity": "HIGH",
+      "description": "opencv-python and opencv-python-headless cannot coexist",
+      "affected_nodes": [
+        "ComfyUI-Inspire-Pack",
+        "ComfyUI-RMBG",
+        "comfyui_controlnet_aux",
+        "was-node-suite-comfyui",
+        "ComfyUI-Impact-Pack"
+      ],
+      "resolution": "Use opencv-python-headless for all nodes (headless environment)"
+    },
+    {
+      "name": "Einops Version Pinning",
+      "severity": "HIGH",
+      "description": "ComfyUI-IPAdapter-Flux and x-flux-comfyui require einops==0.8.0 (pinned)",
+      "affected_nodes": [
+        "ComfyUI-IPAdapter-Flux",
+        "x-flux-comfyui"
+      ],
+      "resolution": "Install einops==0.8.0 to satisfy both nodes"
+    },
+    {
+      "name": "Protobuf Version Range",
+      "severity": "MEDIUM",
+      "description": "ComfyUI-RMBG restricts protobuf to <6.0.0",
+      "affected_nodes": [
+        "ComfyUI-RMBG"
+      ],
+      "resolution": "Install protobuf >=3.20.2,<6.0.0 to satisfy constraint"
+    },
+    {
+      "name": "Package Redundancy",
+      "severity": "MEDIUM",
+      "description": "Multiple custom nodes install common dependencies (inefficient)",
+      "affected_nodes": [
+        "Multiple nodes"
+      ],
+      "resolution": "Consider using -requirements file in ComfyUI or consolidate node installs"
+    }
+  ],
+  "duplicate_packages": {
+    "diffusers": 2,
+    "einops": 4,
+    "ftfy": 2,
+    "gitpython": 3,
+    "huggingface-hub": 2,
+    "matplotlib": 4,
+    "numba": 2,
+    "numpy": 5,
+    "omegaconf": 2,
+    "onnxruntime": 2,
+    "onnxruntime-gpu": 2,
+    "opencv-python": 4,
+    "opencv-python-headless": 2,
+    "pillow": 2,
+    "protobuf": 3,
+    "pyyaml": 2,
+    "rembg": 2,
+    "scikit-image": 3,
+    "scikit-learn": 2,
+    "scipy": 4,
+    "segment-anything": 2,
+    "sentencepiece": 4,
+    "torch": 2,
+    "torchvision": 2,
+    "transformers": 6,
+    "transparent-background": 2
+  },
+  "critical_findings": {
+    "opencv_conflict": true,
+    "einops_pinned": true,
+    "protobuf_restricted": true
+  }
+}

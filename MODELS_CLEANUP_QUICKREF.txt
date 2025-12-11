@@ -1,0 +1,97 @@
+AI MODELS SCATTERED AUDIT - QUICK REFERENCE
+Generated: 2025-12-10
+
+=== SUMMARY ===
+Total Found: 150+ model files across 5 installations
+Total Size: ~421GB
+Scattered: 1.4GB in Downloads, 31GB in old ai-workspace
+Potential Space Savings: 49GB
+
+=== ACTION PLAN ===
+
+[1] RUN CONSOLIDATION SCRIPT (5 minutes)
+    cd D:\workspace\fluxdype
+    .\consolidate_scattered_models.ps1
+
+    Effect: Moves 10 models from Downloads (1.4GB)
+
+[2] EMPTY RECYCLE BIN (1 minute)
+    Effect: Frees ~1GB
+
+[3] DELETE ai-workspace AFTER VERIFICATION (2 minutes)
+    Remove-Item -Recurse -Force "D:\ai-workspace\ComfyUI"
+
+    Effect: Saves 31GB
+
+[4] CLEAN OPTIMUM TEMP FOLDERS (2 minutes)
+    Remove-Item "D:\Optimum\bsy_fp16\*.safetensors"
+    Remove-Item -Recurse "D:\Optimum\lora_temp"
+
+    Effect: Saves 9GB
+
+Total Time: 10 minutes
+Total Space Freed: 41GB
+
+=== KEEP IN PLACE (DO NOT TOUCH) ===
+
+D:\workspace\fluxdype\ComfyUI\models\     [Main Flux installation]
+D:\jdmal\ComfyUI\models\                  [Secondary working installation - 44GB]
+D:\models\                                [LLM models - 139GB]
+D:\Optimum\stable-diffusion-webui\        [Active SDXL installation - 182GB]
+D:\jdmal\llama.cpp\models\                [Vocab files - 50MB]
+
+=== SCATTERED MODELS FOUND ===
+
+C:\Users\Jdmal\Downloads\ (1.4GB):
+  - 4x_NickelbackFS_72000_G.pth (64MB)
+  - 10 LoRAs/embeddings (SDXL, realism, quality)
+
+D:\ai-workspace\ComfyUI\models\ (31GB):
+  - OLD abandoned installation
+  - All duplicates of fluxdype
+  - DELETE after moving unique files
+
+D:\jdmal\ComfyUI\models\ (44GB):
+  - Secondary working installation
+  - Many unique LoRAs
+  - KEEP for now
+
+D:\models\ (139GB):
+  - LLM GGUF models
+  - Well-organized
+  - KEEP
+
+D:\Optimum\ (182GB):
+  - Active SDXL installation
+  - Unique checkpoints and ControlNets
+  - KEEP (clean temp folders only)
+
+=== DUPLICATES (No action needed) ===
+
+Flux models: 3x copies across fluxdype, ai-workspace, jdmal
+Upscalers: RealESRGAN x3, Codeformer x2, GFPGAN x2
+LoRAs: facebookQuality, fluxInstaGirls, NSFW_UNLOCKED, ultraflux
+
+=== POST-CLEANUP DISTRIBUTION ===
+
+Before:  421GB total
+After:   372GB total (-49GB)
+
+Breakdown after cleanup:
+  - Fluxdype:  16.4GB (+1.4GB)
+  - jdmal:     44GB (unchanged)
+  - Optimum:   173GB (-9GB temp cleanup)
+  - LLMs:      139GB (unchanged)
+
+=== VERIFICATION ===
+
+After running consolidation script, test:
+  cd D:\workspace\fluxdype
+  .\start-comfy.ps1
+
+Open browser: http://localhost:8188
+Check new models load in UI
+
+=== DETAILED REPORT ===
+
+See: D:\workspace\fluxdype\SCATTERED_MODELS_AUDIT.md

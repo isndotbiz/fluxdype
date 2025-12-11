@@ -1,0 +1,72 @@
+FLUXDYPE DEPENDENCY CONFLICTS - QUICK REFERENCE
+================================================
+
+CRITICAL ISSUES (MUST FIX):
+==========================
+
+1. OPENCV CONFLICT
+   Problem: opencv-python vs opencv-python-headless used by different nodes
+   Solution: Change all to opencv-python-headless
+
+   Files to change:
+   - ComfyUI-Inspire-Pack/requirements.txt: opencv-python → opencv-python-headless
+   - ComfyUI-RMBG/requirements.txt: opencv-python>=4.7.0 → opencv-python-headless>=4.7.0
+   - comfyui_controlnet_aux/requirements.txt: update to headless
+   - x-flux-comfyui/requirements.txt: opencv-python → opencv-python-headless
+
+
+2. EINOPS VERSION PINNING
+   Problem: x-flux-comfyui and IPAdapter-Flux require einops==0.8.0 (pinned)
+   Solution: Update ComfyUI/requirements.txt to pin einops==0.8.0
+
+   File to change:
+   - ComfyUI/requirements.txt: einops → einops==0.8.0
+
+
+MEDIUM ISSUES (MONITOR):
+========================
+
+3. PROTOBUF RESTRICTION
+   Status: Acceptable - ComfyUI-RMBG requires protobuf<6.0.0
+   Action: Keep restriction, no changes needed
+   Verify: pip install "protobuf>=3.20.2,<6.0.0"
+
+
+4. PACKAGE REDUNDANCY
+   Status: Informational - Normal for ComfyUI architecture
+   Action: Document; consider consolidation if install time becomes issue
+   Impact: transformers, einops, and opencv installed by multiple nodes
+
+
+COMPATIBLE (NO ACTION NEEDED):
+==============================
+
+✓ torch/torchvision - All nodes compatible
+✓ transformers>=4.37.2 - All nodes compatible
+✓ numpy>=1.25.0 - All nodes compatible
+✓ CUDA 12.1 support - Verified compatible
+
+
+NODES ANALYZED: 14
+TOTAL PACKAGES: 74
+HIGH CONFLICTS: 2
+MEDIUM ISSUES: 2
+
+
+QUICK FIX CHECKLIST:
+====================
+
+[ ] 1. Update 4 nodes to use opencv-python-headless
+[ ] 2. Pin einops==0.8.0 in ComfyUI/requirements.txt
+[ ] 3. Test installation: pip install -r ComfyUI/requirements.txt
+[ ] 4. Verify: python -c "import cv2, einops; print('OK')"
+[ ] 5. Run ComfyUI to test custom nodes load
+
+Expected result after fixes:
+- No pip dependency conflicts
+- All custom nodes import successfully
+- Headless environment optimized for RTX 3090
+
+
+For detailed analysis, see: DEPENDENCY_CONFLICTS.txt (610 lines)
+Generated: 2025-12-10

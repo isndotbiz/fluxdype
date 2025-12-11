@@ -1,0 +1,46 @@
+# SpiritAtlas - UI Elements & Buttons
+# Buttons, badges, and interactive elements
+# Note: These need custom resolutions - generate as square and resize/crop as needed
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_ui_elements.txt -Resolution square -Quality high
+
+# 2.1 Primary Action Button Background
+A horizontal rounded rectangle with stunning cosmic gradient fill. The gradient flows from mystic purple (#7C3AED) on left to aurora pink (#EC4899) in center to spiritual purple (#8B5CF6) on right. Subtle sparkle particles scattered across surface. Soft inner glow effect. The shape has rounded corners. Ethereal purple mist overlay at 20% opacity. Suitable for button background with text overlay. Premium app button design, cosmic gradient, spiritual aesthetic, modern UI element, 4K quality, transparent background.
+
+# 2.2 Secondary Button Border
+A rounded rectangle outline/stroke in cosmic gradient colors. The border has medium width with gradient transitioning from stardust blue (#3B82F6) to water teal (#14B8A6) to sacred gold (#D97706). Inner fill is transparent. Rounded corners. The border has subtle glow effect making it appear luminous. Background is transparent. The gradient border should be smooth and continuous around all edges. Modern glass-morphic UI element, ethereal border glow, cosmic colors, professional button design, 4K quality.
+
+# 2.3 Floating Action Button (FAB) Background
+A perfect circular gradient button in cosmic purple tones. Radial gradient from glowing spiritual purple (#8B5CF6) in center radiating outward to cosmic violet (#6B21A8) at edges. Subtle golden ring (#D97706) around the outer edge. Soft drop shadow beneath (purple-tinted shadow). Small sparkle particles around the circle's edge. Transparent background. The circle has ethereal glow effect pulsing from center. Perfect symmetry, mystical aesthetic, floating button design, premium UI element, 4K quality.
+
+# 2.4 Icon Button - Gradient Circle
+A small circular button with glass-morphic design. Circular gradient from mystic purple (#7C3AED) to cosmic violet (#6B21A8). Semi-transparent overlay giving frosted glass effect. Subtle white highlight on top-left edge (light reflection). Soft inner shadow for depth. The circle has ethereal purple glow around edges. Transparent background. Modern glassmorphism style, spiritual purple tones, icon button background, UI element, 4K quality.
+
+# 4.4 Avatar Frame - Sacred Circle
+An ornate circular frame for profile avatars. Outer ring with inner transparent circle. The frame features intricate sacred geometry patterns - flower of life segments, mandala petals, and mystical symbols. The frame is rendered in gradient from mystic purple (#7C3AED) to sacred gold (#D97706) flowing around the circle. Small gemstone-like points in chakra colors positioned at cardinal points (north, south, east, west). Inner edge has subtle glow. Center is transparent for avatar photo. The design is ornate but elegant, not overwhelming. Sacred mandala frame, mystical border, spiritual decoration, premium UI element, 4K transparent background.
+
+# 4.5 Avatar Ring - Energy Aura
+A glowing circular aura ring for avatars. Medium width ring. The ring is pure ethereal energy - gradient flowing from spiritual purple (#8B5CF6) through aurora pink (#EC4899) to sacred gold (#D97706) and back, creating flowing energy effect. The ring has soft glowing edges that fade outward like aura energy. Small light particles orbiting around the ring path. Inner and outer edges are soft gradient fade (not hard line). Center is transparent for avatar. The effect looks like spiritual energy radiating from person. Ethereal aura, spiritual energy ring, glowing halo effect, mystical avatar decoration, 4K transparent background.
+
+# 4.6 Avatar Overlay - Compatibility Heart
+A small heart-shaped badge for profile avatars. The heart is filled with cosmic gradient from tantric rose (#EC4899) to intimacy purple (#A855F7). Small sparkle particles around heart edges. Subtle golden outline (#D97706) thin width. Small compatibility glow area in center. The heart has soft drop shadow in purple tint. The design is cute but sophisticated, suitable for showing romantic compatibility. Transparent background. Romantic heart badge, compatibility indicator, spiritual love symbol, UI overlay element, 4K quality.
+
+# 6.1 Card Background - Glassmorphic
+A modern glassmorphic rectangular card background with rounded corners. Semi-transparent frosted glass effect with subtle purple tint (#7C3AED at 15% opacity). Soft blur effect creating depth. Subtle white gradient highlight on top-left edge simulating light reflection. Very faint sacred geometry dot pattern within at 3% opacity. Slight dark shadow at bottom-right. The card has ethereal floating appearance. Modern glass-morphism UI, frosted glass card, spiritual purple tint, premium material design, 4K transparent background.
+
+# 6.2 Divider Line - Cosmic Gradient
+A thin horizontal gradient line divider. The line gradients from transparent on left through cosmic gradient (mystic purple #7C3AED to aurora pink #EC4899 to sacred gold #D97706 in center) back to transparent on right. Small sparkle particles along the line. Soft glow effect above and below the line. Transparent background. The divider is elegant and subtle. Cosmic gradient line, UI divider, spiritual separator, premium design element, 4K quality.
+
+# 6.3 Loading Spinner - Sacred Geometry
+A sacred geometry loading spinner design. Circular formation of 7 circles arranged in flower pattern (like petals). Each circle is in different chakra color (red #EF4444, orange #F97316, yellow #FDE047, green #22C55E, blue #3B82F6, indigo #6366F1, violet #8B5CF6) with ethereal glow. The circles are connected by thin golden lines (#D97706) forming geometric pattern. This is the base frame - designed to be rotated for animation. Center has small flower of life pattern. Transparent background. The design is balanced and symmetrical for smooth rotation. Sacred geometry, chakra spinner, spiritual loading animation, UI element, 4K quality.
+
+# 6.4 Success Checkmark - Cosmic
+A cosmic checkmark symbol for success states. Large checkmark in sacred gold (#D97706) with ethereal glow. The checkmark has smooth curved lines (not angular). Surrounded by circular burst of golden light particles radiating outward. Behind the checkmark is subtle circular gradient from green (#22C55E) at 20% opacity. Small stars twinkling around the edges. The design conveys spiritual achievement and success. Transparent background. Success icon, achievement symbol, spiritual checkmark, premium UI element, 4K quality.
+
+# 6.5 Error State - Gentle Cosmic
+A gentle error/warning icon for error states. A circular ring in warning gold (#FBBF24) with soft glow. Inside the ring is an exclamation mark or info symbol in the same gold color. The ring has subtle pulsing glow animation quality. Small purple particles (#7C3AED) floating around suggesting gentle cosmic concern rather than harsh error. The design is informative without being alarming - spiritual and supportive rather than aggressive. Transparent background. Gentle error icon, warning symbol, spiritual UI feedback, premium element, 4K quality.
+
+# 1.5 Icon Badge - Notification
+A minimal monochrome icon of a stylized lotus flower or third-eye chakra symbol in white on transparent background. Simple, clean line art with symmetrical design. The symbol consists of a small circle with curved lines forming petals around it, resembling both a lotus and an eye. Suitable for Android notification icon (must be white/transparent only). Vector style, crisp lines, symbolic, minimal detail, professional notification badge design, perfect symmetry.
+
+# 1.6 Foreground Adaptive Icon
+A centered sacred geometry lotus mandala design for adaptive icon foreground. The lotus has 7 glowing petals in mystic purple (#7C3AED) arranged in perfect circle. Center features golden seed of life pattern (#D97706). Design is contained within center area of canvas. Soft purple glow radiates from center. Transparent background. The design should work on any background color. Sacred geometry, spiritual symbol, lotus flower, chakra colors, professional icon design, perfect symmetry, 4K quality.

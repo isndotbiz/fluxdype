@@ -1,0 +1,48 @@
+# SpiritAtlas - Square 512x512 Assets
+# Avatars, chakras, and medium-resolution symbols
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_square_512.txt -Resolution square -Quality high
+
+# 1.3 Logo - Sacred Geometry Symbol
+An elegant sacred geometry logo design: a perfect circle containing a seed of life pattern (overlapping circles forming flower of life foundation) in luminous mystic purple (#7C3AED) gradient to spiritual purple (#8B5CF6). Seven small chakra-colored dots arranged in ascending arc within the pattern (red #EF4444, orange #F97316, yellow #FDE047, green #22C55E, blue #3B82F6, indigo #6366F1, violet #8B5CF6). Fine golden lines (#D97706) forming the geometric structure. Transparent background. The design is symmetrical, balanced, and radiates subtle ethereal glow. Crisp vector-style artwork, sacred geometry precision, mystical symbolism, professional icon design, 4K quality.
+
+# 4.1 Default Avatar - Cosmic Silhouette Masculine
+A default profile avatar showing cosmic silhouette of a masculine figure. Circular avatar. The silhouette is filled with cosmic starfield pattern - night sky gradient with stars and nebula in purple and blue tones. The silhouette shows head and shoulders in simple iconic form. Circular border in sacred gold (#D97706) 4px width. Background is transparent. The figure has ethereal cosmic energy, made of stars and space. Mystical, spiritual, cosmic avatar, professional placeholder design, 4K quality.
+
+# 4.2 Default Avatar - Cosmic Silhouette Feminine
+A default profile avatar showing cosmic silhouette of a feminine figure. Circular avatar. The silhouette is filled with aurora borealis gradient - flowing pink (#EC4899), purple (#7C3AED), and teal (#14B8A6) with stars and light particles. The silhouette shows head and shoulders with flowing hair in simple iconic form. Circular border in aurora pink (#EC4899) 4px width. Background is transparent. The figure radiates divine feminine energy, made of cosmic light and stardust. Mystical goddess energy, spiritual avatar, professional placeholder design, 4K quality.
+
+# 4.3 Default Avatar - Cosmic Silhouette Non-Binary
+A default profile avatar showing cosmic silhouette of an androgynous figure. Circular avatar. The silhouette is filled with balanced cosmic gradient blending all elements - purple fire, green earth, blue air, teal water creating harmonious unity. Scattered stars and sacred geometry flower of life pattern within. The silhouette is perfectly balanced androgynous form. Circular border in sacred gold (#D97706) 4px width. Background is transparent. The figure represents divine balance and wholeness, made of all elements in harmony. Mystical unified energy, spiritual avatar, professional placeholder design, 4K quality.
+
+# 5.1.1 CHAKRA 1 - ROOT (MULADHARA)
+A glowing sacred symbol of root chakra. Four-petaled lotus in rich red (#EF4444) with Sanskrit symbol for 'Lam' in center. Downward-pointing triangle in darker red. Ethereal red glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.2 CHAKRA 2 - SACRAL (SVADHISTHANA)
+A glowing sacred symbol of sacral chakra. Six-petaled lotus in vibrant orange (#F97316) with Sanskrit 'Vam' in center. Crescent moon symbol in lighter orange. Ethereal orange glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.3 CHAKRA 3 - SOLAR PLEXUS (MANIPURA)
+A glowing sacred symbol of solar plexus chakra. Ten-petaled lotus in bright yellow (#FDE047) with Sanskrit 'Ram' in center. Downward-pointing triangle in golden yellow. Ethereal yellow glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.4 CHAKRA 4 - HEART (ANAHATA)
+A glowing sacred symbol of heart chakra. Twelve-petaled lotus in emerald green (#22C55E) with Sanskrit 'Yam' in center. Two overlapping triangles forming star of David in lighter green. Ethereal green glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.5 CHAKRA 5 - THROAT (VISHUDDHA)
+A glowing sacred symbol of throat chakra. Sixteen-petaled lotus in sky blue (#3B82F6) with Sanskrit 'Ham' in center. Circle with downward-pointing triangle in lighter blue. Ethereal blue glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.6 CHAKRA 6 - THIRD EYE (AJNA)
+A glowing sacred symbol of third eye chakra. Two-petaled lotus in deep indigo (#6366F1) with Sanskrit 'Om' in center. Circle with downward-pointing triangle in purple-indigo. Ethereal indigo glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.1.7 CHAKRA 7 - CROWN (SAHASRARA)
+A glowing sacred symbol of crown chakra. Thousand-petaled lotus in violet purple (#8B5CF6) with Sanskrit 'Ah' in center. Full blooming lotus with inner sacred geometry mandala. Ethereal violet glow radiating outward. Transparent background. Sacred geometry, spiritual chakra art, hindu symbolism, professional icon design, 4K quality.
+
+# 5.5.1 FIRE ELEMENT
+An upward-pointing triangle in flames. The triangle is filled with fire gradient from orange (#F97316) to red (#EF4444) to golden yellow (#FBBF24). Flame particles dancing around the triangle edges. Ethereal fire glow radiating outward. Sacred geometry precision. Transparent background. Fire element symbol, spiritual iconography, elemental magic, alchemical symbol, 4K quality.
+
+# 5.5.2 EARTH ELEMENT
+A downward-pointing triangle filled with earth tones. Gradient from forest green (#22C55E) through emerald to earth brown (#78350F). Texture of crystalline structures or sacred geometric patterns within. Root-like tendrils extending from bottom point. Earthy glow in green. Transparent background. Earth element symbol, spiritual iconography, elemental magic, alchemical symbol, 4K quality.
+
+# 5.5.3 AIR ELEMENT
+An upward-pointing triangle with horizontal line through center (traditional air symbol). Filled with flowing cyan (#06B6D4) to sky blue (#3B82F6) gradient. Wisps of wind and cloud-like formations swirling around. Light particles floating upward. Airy ethereal glow. Transparent background. Air element symbol, spiritual iconography, elemental magic, alchemical symbol, 4K quality.
+
+# 5.5.4 WATER ELEMENT
+A downward-pointing triangle filled with water gradient. Flowing from deep teal (#14B8A6) through ocean blue (#3B82F6) to light aqua. Water droplets and wave patterns within the triangle. Flowing energy downward like waterfall. Watery shimmer and glow. Transparent background. Water element symbol, spiritual iconography, elemental magic, alchemical symbol, 4K quality.

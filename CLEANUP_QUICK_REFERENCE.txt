@@ -1,0 +1,217 @@
+================================================================================
+ComfyUI Custom Nodes Cleanup - Quick Reference Card
+================================================================================
+
+QUICK START
+-----------
+cd D:\workspace\fluxdype
+.\cleanup_custom_nodes.ps1          # Interactive mode (asks for confirmation)
+.\cleanup_custom_nodes.ps1 -Force   # Automatic mode (no confirmation)
+
+Then restart ComfyUI:
+.\start-comfy.ps1
+
+================================================================================
+
+NODES BEING REMOVED (11 total)
+-------------------------------
+
+HIGH PRIORITY (Flux conflicts):
+  ✗ ComfyUI-GGUF                     [conflicts with Turbo LoRA]
+  ✗ ComfyUI-IPAdapter-Flux           [superseded by plus version]
+  ✗ controlaltai-nodes               [unmet dependencies]
+
+MEDIUM PRIORITY (Overlapping):
+  ✗ ComfyUI_InstantID                [external API issues]
+  ✗ ComfyUI_Comfyroll_CustomNodes    [deprecated]
+  ✗ efficiency-nodes-comfyui         [overlaps essentials]
+  ✗ ComfyUI_essentials               [dependency conflicts]
+  ✗ comfyui_controlnet_aux           [heavy deps, VRAM issues]
+
+LOW PRIORITY (Low utility):
+  ✗ cg-use-everywhere                [minimal usage]
+  ✗ rgthree-comfy                    [overlaps manager]
+  ✗ ComfyUI-Custom-Scripts           [overlaps others]
+
+================================================================================
+
+PROTECTED CORE NODES (10 total - NEVER REMOVED)
+-----------------------------------------------
+  ✓ was-node-suite-comfyui
+  ✓ ComfyUI-Impact-Pack
+  ✓ ComfyUI-Inspire-Pack
+  ✓ multi-lora-stack                [CRITICAL for Turbo LoRA]
+  ✓ x-flux-comfyui
+  ✓ ComfyUI_IPAdapter_plus           [replaces Flux version]
+  ✓ ComfyUI_UltimateSDUpscale
+  ✓ ComfyUI-RMBG
+  ✓ comfyui-dynamicprompts
+  ✓ ComfyUI-Manager
+
+================================================================================
+
+WHAT HAPPENS WHEN YOU RUN THE SCRIPT
+-------------------------------------
+
+1. BACKUP PHASE
+   ├─ Creates: D:\workspace\fluxdype\custom_nodes_removed_backup\
+   ├─ Copies each node with timestamp: NodeName_20241210_102345\
+   └─ Preserves complete directory structure
+
+2. REMOVAL PHASE
+   ├─ Deletes conflicting nodes from ComfyUI\custom_nodes\
+   ├─ Logs each removal
+   └─ Continues even if a single node fails
+
+3. REPORT PHASE
+   ├─ Lists remaining nodes
+   ├─ Shows backup location
+   ├─ Writes detailed log to: cleanup_custom_nodes_log.txt
+   └─ Provides recovery instructions
+
+TIME ESTIMATE: 1-2 minutes depending on node sizes
+
+================================================================================
+
+RECOVERY (If you need to restore a removed node)
+-------------------------------------------------
+
+1. List available backups:
+   Get-ChildItem "D:\workspace\fluxdype\custom_nodes_removed_backup\"
+
+2. Restore the node (example: ComfyUI-GGUF):
+   Copy-Item -Path "D:\workspace\fluxdype\custom_nodes_removed_backup\ComfyUI-GGUF_*" `
+             -Destination "D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-GGUF" `
+             -Recurse -Force
+
+3. Restart ComfyUI:
+   .\start-comfy.ps1
+
+================================================================================
+
+SCRIPT PARAMETERS
+-----------------
+
+-Force              Skip interactive confirmation (proceed automatically)
+-SkipBackup         Don't create backups before removal (NOT RECOMMENDED)
+
+Examples:
+  .\cleanup_custom_nodes.ps1 -Force
+  .\cleanup_custom_nodes.ps1 -SkipBackup -Force   [dangerous!]
+
+================================================================================
+
+EXPECTED IMPROVEMENTS AFTER CLEANUP
+-----------------------------------
+
+✓ Faster ComfyUI startup time
+✓ Reduced memory overhead
+✓ Lower initial VRAM usage
+✓ Fewer CPU dependency checks
+✓ Cleaner console output
+✓ Fewer conflicting node errors
+
+Estimated impact:
+  - Startup time: 15-30% faster
+  - Initial VRAM: 200-400MB saved
+  - Disk space: ~500MB-1GB freed
+
+================================================================================
+
+LOGS AND FILES
+--------------
+
+cleanup_custom_nodes_log.txt
+  └─ Detailed operation log (created after each run)
+  └─ Location: D:\workspace\fluxdype\
+
+cleanup_custom_nodes.ps1
+  └─ The cleanup script itself
+  └─ Location: D:\workspace\fluxdype\
+
+custom_nodes_removed_backup/
+  └─ Backup directory with all removed nodes
+  └─ Location: D:\workspace\fluxdype\
+  └─ Can be safely deleted after confirming everything works
+
+================================================================================
+
+TROUBLESHOOTING
+---------------
+
+Problem: "ComfyUI server won't start after cleanup"
+Solution:
+  1. Check console for missing node errors
+  2. Restore that node from backup (see RECOVERY section)
+  3. Restart server
+
+Problem: "I need to undo all removals"
+Solution:
+  1. Stop ComfyUI server (Ctrl+C)
+  2. Delete current custom_nodes directory
+  3. Rename custom_nodes_removed_backup to custom_nodes
+  4. Restart ComfyUI
+
+Problem: "A specific node won't delete"
+Solution:
+  1. Stop ComfyUI server (it may have locks)
+  2. Try the cleanup script again
+  3. If still fails, manually delete the directory
+
+================================================================================
+
+IMPORTANT NOTES
+---------------
+
+• BACKUPS ARE CREATED FIRST
+  └─ Safe to run; nothing is deleted without a backup
+
+• CORE NODES ARE PROTECTED
+  └─ The script cannot accidentally remove essential nodes
+
+• LOG FILE IS COMPREHENSIVE
+  └─ Always check cleanup_custom_nodes_log.txt for details
+
+• RESTART COMFYUI AFTER CLEANUP
+  └─ Required for changes to take effect
+
+• BACKUPS PERSIST
+  └─ Manually delete custom_nodes_removed_backup/ when safe
+
+================================================================================
+
+ADVANCED: SELECTIVE NODE REMOVAL
+---------------------------------
+
+To remove only specific nodes, edit the script and delete entries from the
+$nodesToRemove array at the top of cleanup_custom_nodes.ps1, keeping only
+the nodes you want removed.
+
+Or manually remove a single node:
+  Remove-Item -Path "D:\workspace\fluxdype\ComfyUI\custom_nodes\NodeName" -Recurse -Force
+
+Then restart ComfyUI:
+  .\start-comfy.ps1
+
+================================================================================
+
+SUPPORT RESOURCES
+-----------------
+
+Script Location:
+  D:\workspace\fluxdype\cleanup_custom_nodes.ps1
+
+Full Documentation:
+  D:\workspace\fluxdype\CLEANUP_GUIDE.md
+
+Configuration Reference:
+  D:\workspace\fluxdype\CLAUDE.md
+
+ComfyUI Official Docs:
+  https://github.com/comfyanonymous/ComfyUI
+
+================================================================================
+Generated: 2024-12-10
+Version: 1.0
+Target: ComfyUI with Flux Kria FP8 on RTX 3090
+================================================================================

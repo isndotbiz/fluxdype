@@ -1,0 +1,379 @@
+{
+  "all_nodes": {
+    "ComfyUI (base)": {
+      "torch": "any",
+      "torchvision": "any",
+      "numpy": ">=1.25.0",
+      "einops": "any",
+      "transformers": ">=4.37.2",
+      "tokenizers": ">=0.13.3",
+      "sentencepiece": "any",
+      "safetensors": ">=0.4.2",
+      "pillow": "any",
+      "scipy": "any",
+      "pyyaml": "any"
+    },
+    "comfyui-dynamicprompts": {
+      "dynamicprompts": "==0.30.2"
+    },
+    "ComfyUI-GGUF": {
+      "gguf": ">=0.13.0",
+      "sentencepiece": "any",
+      "protobuf": "any"
+    },
+    "ComfyUI-Impact-Pack": {
+      "segment-anything": "any",
+      "scikit-image": "any",
+      "piexif": "any",
+      "transformers": "any",
+      "opencv-python-headless": "any",
+      "scipy": "any",
+      "numpy": "any",
+      "dill": "any",
+      "matplotlib": "any",
+      "sam2": "git+https://github.com/facebookresearch/sam2"
+    },
+    "ComfyUI-Inspire-Pack": {
+      "matplotlib": "any",
+      "cachetools": "any",
+      "numpy": "any",
+      "webcolors": "any",
+      "opencv-python": "any"
+    },
+    "ComfyUI-IPAdapter-Flux": {
+      "einops": "==0.8.0",
+      "transformers": ">=4.37.2",
+      "diffusers": "any",
+      "sentencepiece": ">=0.2.0",
+      "protobuf": ">=4.25.5"
+    },
+    "ComfyUI-Manager": {
+      "gitpython": "any",
+      "pygithub": "any",
+      "matrix-nio": "any",
+      "transformers": "any",
+      "huggingface-hub": "any",
+      "typer": "any",
+      "rich": "any",
+      "typing-extensions": "any",
+      "toml": "any",
+      "uv": "any",
+      "chardet": "any"
+    },
+    "ComfyUI-RMBG": {
+      "huggingface-hub": ">=0.19.0",
+      "transparent-background": ">=1.1.2",
+      "segment-anything": ">=1.0",
+      "groundingdino-py": ">=0.4.0",
+      "opencv-python": ">=4.7.0",
+      "onnxruntime": ">=1.15.0",
+      "onnxruntime-gpu": ">=1.15.0",
+      "protobuf": ">=3.20.2,<6.0.0",
+      "hydra-core": ">=1.3.0",
+      "omegaconf": ">=2.3.0",
+      "iopath": ">=0.1.9",
+      "decord": "any",
+      "ftfy": "any",
+      "typing_extensions": "any"
+    },
+    "comfyui_controlnet_aux": {
+      "torch": "any",
+      "importlib_metadata": "any",
+      "huggingface_hub": "any",
+      "scipy": "any",
+      "opencv-python": ">=4.7.0.72",
+      "filelock": "any",
+      "numpy": "any",
+      "pillow": "any",
+      "einops": "any",
+      "torchvision": "any",
+      "pyyaml": "any",
+      "scikit-image": "any",
+      "python-dateutil": "any",
+      "mediapipe": "any",
+      "fvcore": "any",
+      "yapf": "any",
+      "omegaconf": "any",
+      "ftfy": "any",
+      "addict": "any",
+      "yacs": "any",
+      "trimesh": "any",
+      "albumentations": "any",
+      "scikit-learn": "any",
+      "matplotlib": "any"
+    },
+    "ComfyUI_essentials": {
+      "numba": "any",
+      "colour-science": "any",
+      "rembg": "any",
+      "pixeloe": "any",
+      "transparent-background": "any"
+    },
+    "ComfyUI_InstantID": {
+      "insightface": "any",
+      "onnxruntime": "any",
+      "onnxruntime-gpu": "any"
+    },
+    "efficiency-nodes-comfyui": {
+      "clip-interrogator": "any",
+      "simpleeval": "any"
+    },
+    "rgthree-comfy": {},
+    "was-node-suite-comfyui": {
+      "cmake": "any",
+      "fairscale": ">=0.4.4",
+      "img2texture": "git+https://github.com/ltdrdata/img2texture.git",
+      "cstr": "git+https://github.com/ltdrdata/cstr",
+      "gitpython": "any",
+      "imageio": "any",
+      "joblib": "any",
+      "matplotlib": "any",
+      "numba": ">=0.62",
+      "numpy": "any",
+      "opencv-python-headless": "any",
+      "pilgram": "any",
+      "ffmpy": "git+https://github.com/ltdrdata/ffmpy.git",
+      "rembg": "any",
+      "scikit-image": ">=0.20.0",
+      "scikit-learn": "any",
+      "scipy": "any",
+      "timm": ">=0.4.12",
+      "tqdm": "any",
+      "transformers": "any"
+    },
+    "x-flux-comfyui": {
+      "gitpython": "any",
+      "einops": "==0.8.0",
+      "transformers": "any",
+      "diffusers": "any",
+      "sentencepiece": "any",
+      "opencv-python": "any"
+    }
+  },
+  "critical_packages": {
+    "torchvision": [
+      [
+        "ComfyUI (base)",
+        "any"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ]
+    ],
+    "huggingface_hub": [
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ]
+    ],
+    "numpy": [
+      [
+        "ComfyUI (base)",
+        ">=1.25.0"
+      ],
+      [
+        "ComfyUI-Impact-Pack",
+        "any"
+      ],
+      [
+        "ComfyUI-Inspire-Pack",
+        "any"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ],
+      [
+        "was-node-suite-comfyui",
+        "any"
+      ]
+    ],
+    "torch": [
+      [
+        "ComfyUI (base)",
+        "any"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ]
+    ],
+    "transformers": [
+      [
+        "ComfyUI (base)",
+        ">=4.37.2"
+      ],
+      [
+        "ComfyUI-Impact-Pack",
+        "any"
+      ],
+      [
+        "ComfyUI-IPAdapter-Flux",
+        ">=4.37.2"
+      ],
+      [
+        "ComfyUI-Manager",
+        "any"
+      ],
+      [
+        "was-node-suite-comfyui",
+        "any"
+      ],
+      [
+        "x-flux-comfyui",
+        "any"
+      ]
+    ],
+    "diffusers": [
+      [
+        "ComfyUI-IPAdapter-Flux",
+        "any"
+      ],
+      [
+        "x-flux-comfyui",
+        "any"
+      ]
+    ],
+    "opencv-python": [
+      [
+        "ComfyUI-Inspire-Pack",
+        "any"
+      ],
+      [
+        "ComfyUI-RMBG",
+        ">=4.7.0"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        ">=4.7.0.72"
+      ],
+      [
+        "x-flux-comfyui",
+        "any"
+      ]
+    ],
+    "opencv-python-headless": [
+      [
+        "ComfyUI-Impact-Pack",
+        "any"
+      ],
+      [
+        "was-node-suite-comfyui",
+        "any"
+      ]
+    ],
+    "scipy": [
+      [
+        "ComfyUI (base)",
+        "any"
+      ],
+      [
+        "ComfyUI-Impact-Pack",
+        "any"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ],
+      [
+        "was-node-suite-comfyui",
+        "any"
+      ]
+    ],
+    "einops": [
+      [
+        "ComfyUI (base)",
+        "any"
+      ],
+      [
+        "ComfyUI-IPAdapter-Flux",
+        "==0.8.0"
+      ],
+      [
+        "comfyui_controlnet_aux",
+        "any"
+      ],
+      [
+        "x-flux-comfyui",
+        "==0.8.0"
+      ]
+    ]
+  },
+  "all_packages": [
+    "addict",
+    "albumentations",
+    "cachetools",
+    "chardet",
+    "clip-interrogator",
+    "cmake",
+    "colour-science",
+    "cstr",
+    "decord",
+    "diffusers",
+    "dill",
+    "dynamicprompts",
+    "einops",
+    "fairscale",
+    "ffmpy",
+    "filelock",
+    "ftfy",
+    "fvcore",
+    "gguf",
+    "gitpython",
+    "groundingdino-py",
+    "huggingface-hub",
+    "huggingface_hub",
+    "hydra-core",
+    "imageio",
+    "img2texture",
+    "importlib_metadata",
+    "insightface",
+    "iopath",
+    "joblib",
+    "matplotlib",
+    "matrix-nio",
+    "mediapipe",
+    "numba",
+    "numpy",
+    "omegaconf",
+    "onnxruntime",
+    "onnxruntime-gpu",
+    "opencv-python",
+    "opencv-python-headless",
+    "piexif",
+    "pilgram",
+    "pillow",
+    "pixeloe",
+    "protobuf",
+    "pygithub",
+    "python-dateutil",
+    "pyyaml",
+    "rembg",
+    "rich",
+    "safetensors",
+    "sam2",
+    "scikit-image",
+    "scikit-learn",
+    "scipy",
+    "segment-anything",
+    "sentencepiece",
+    "simpleeval",
+    "timm",
+    "tokenizers",
+    "toml",
+    "torch",
+    "torchvision",
+    "tqdm",
+    "transformers",
+    "transparent-background",
+    "trimesh",
+    "typer",
+    "typing-extensions",
+    "typing_extensions",
+    "uv",
+    "webcolors",
+    "yacs",
+    "yapf"
+  ]
+}

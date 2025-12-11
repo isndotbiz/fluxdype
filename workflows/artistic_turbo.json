@@ -1,0 +1,144 @@
+{
+  "workflow_info": {
+    "name": "Artistic Turbo Generator",
+    "description": "Optimized artistic/stylized image generation with Turbo LoRA + Artistic Style LoRA for creative work",
+    "version": "1.0",
+    "resolution": "1024x1024 (square)",
+    "optimized_for": "artistic_creative",
+    "quality_level": "high_artistic_impact",
+    "inference_time_seconds": "6-8",
+    "steps": 10,
+    "cfg": 2.5,
+    "sampler": "dpmpp_2m_sde",
+    "scheduler": "karras",
+    "lora_1": "FLUX.1-Turbo-Alpha.safetensors (strength: 0.8)",
+    "lora_2": "ArtisticStyleLoRA or SurrealismLoRA (strength: 0.7)"
+  },
+  "prompt": {
+    "1": {
+      "inputs": {
+        "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "class_type": "UNETLoader",
+      "_meta": {
+        "title": "Load Flux Kria FP8 UNET"
+      }
+    },
+    "2": {
+      "inputs": {
+        "clip_name1": "clip_l.safetensors",
+        "clip_name2": "t5xxl_fp16.safetensors",
+        "type": "flux"
+      },
+      "class_type": "DualCLIPLoader",
+      "_meta": {
+        "title": "Load CLIP L + T5XXL Text Encoders"
+      }
+    },
+    "3": {
+      "inputs": {
+        "vae_name": "ae.safetensors"
+      },
+      "class_type": "VAELoader",
+      "_meta": {
+        "title": "Load VAE Encoder"
+      }
+    },
+    "4": {
+      "inputs": {
+        "text": "digital art, concept art, vibrant colors, artistic style, trending on artstation, high quality, masterpiece, detailed illustration, creative composition, bold colors, expressive brushstrokes, stylized aesthetic",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Positive Prompt - Artistic Focus"
+      }
+    },
+    "5": {
+      "inputs": {
+        "text": "photograph, photographic, realistic, photo realism, low quality, blurry, distorted, deformed, bad anatomy, watermark, text, logo, mundane, boring",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Negative Prompt"
+      }
+    },
+    "6": {
+      "inputs": {
+        "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+        "strength_model": 0.8,
+        "strength_clip": 0.8,
+        "model": ["1", 0],
+        "clip": ["2", 0]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Turbo LoRA (Alpha) - 0.8 Strength"
+      }
+    },
+    "7": {
+      "inputs": {
+        "lora_name": "ArtisticStyleLoRA.safetensors",
+        "strength_model": 0.7,
+        "strength_clip": 0.7,
+        "model": ["6", 0],
+        "clip": ["6", 1]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Artistic Style LoRA - 0.7 Strength"
+      }
+    },
+    "8": {
+      "inputs": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      },
+      "class_type": "EmptyLatentImage",
+      "_meta": {
+        "title": "Initialize Latent Space (1024x1024)"
+      }
+    },
+    "9": {
+      "inputs": {
+        "seed": 0,
+        "steps": 10,
+        "cfg": 2.5,
+        "sampler_name": "dpmpp_2m_sde",
+        "scheduler": "karras",
+        "denoise": 1.0,
+        "model": ["7", 0],
+        "positive": ["4", 0],
+        "negative": ["5", 0],
+        "latent_image": ["8", 0]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "Creative Sampler - 10 Steps, DPM++ 2M SDE, CFG 2.5"
+      }
+    },
+    "10": {
+      "inputs": {
+        "samples": ["9", 0],
+        "vae": ["3", 0]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode to Image"
+      }
+    },
+    "11": {
+      "inputs": {
+        "filename_prefix": "artistic_turbo_",
+        "images": ["10", 0]
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Artistic Image"
+      }
+    }
+  }
+}

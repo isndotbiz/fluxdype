@@ -1,0 +1,306 @@
+{
+  "workflow_info": {
+    "name": "UI/UX Design Assets Generator - Turbo Optimized",
+    "description": "Optimized ComfyUI workflow for ultra-fast UI/UX design asset generation with automatic background removal. Generates clean, minimalist design elements with transparent backgrounds. Target: 4-6 second generation time.",
+    "version": "2.0",
+    "resolution": "1024x1024",
+    "target_resolution": "square",
+    "generation_speed": "ultra_fast",
+    "inference_time_seconds": "4-6",
+    "steps": 8,
+    "cfg": 1.8,
+    "sampler": "euler",
+    "use_case": "ui_ux_design_assets",
+    "output_format": "png_transparent",
+    "optimizations": [
+      "Flux Kria FP8 quantization",
+      "Turbo LoRA for fast inference",
+      "Quality enhancement LoRA for UI aesthetics",
+      "8-step generation",
+      "Low CFG for clean results",
+      "Automatic background removal with BiRefNet-general"
+    ],
+    "requirements": {
+      "model": "flux1-krea-dev_fp8_scaled.safetensors",
+      "lora_1": "FLUX.1-Turbo-Alpha.safetensors",
+      "lora_2": "facebookQuality.3t4R.safetensors",
+      "background_removal_node": "BiRefNetRMBG",
+      "cuda_compute": "GPU optimized for RTX 3090"
+    }
+  },
+  "prompt": {
+    "1": {
+      "inputs": {
+        "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "class_type": "UNETLoader",
+      "_meta": {
+        "title": "Load Flux Kria FP8 UNET",
+        "description": "Load the quantized Flux Kria FP8 model for fast inference with RTX 3090"
+      }
+    },
+    "2": {
+      "inputs": {
+        "clip_name1": "clip_l.safetensors",
+        "clip_name2": "t5xxl_fp16.safetensors",
+        "type": "flux"
+      },
+      "class_type": "DualCLIPLoader",
+      "_meta": {
+        "title": "Load CLIP L + T5XXL Text Encoders",
+        "description": "Load dual CLIP text encoders for text understanding"
+      }
+    },
+    "3": {
+      "inputs": {
+        "vae_name": "ae.safetensors"
+      },
+      "class_type": "VAELoader",
+      "_meta": {
+        "title": "Load VAE Encoder",
+        "description": "Load VAE for image encoding/decoding"
+      }
+    },
+    "4": {
+      "inputs": {
+        "text": "clean UI design, minimalist, modern, professional interface, buttons, cards, responsive design, flat design, geometric shapes, web interface, app mockup, digital product, interface elements, user interface, highly detailed, sharp focus, professional quality, clean lines, modern aesthetics",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Positive Prompt - UI/UX Design",
+        "description": "Optimized prompt for clean UI design generation"
+      }
+    },
+    "5": {
+      "inputs": {
+        "text": "distorted, blurry, complex, cluttered, messy, noisy, low quality, pixelated, deformed, broken layout, unreadable text, bad typography, ugly, crude, rough, sketch, unfinished",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Negative Prompt",
+        "description": "Specify what to avoid in UI design generation"
+      }
+    },
+    "6": {
+      "inputs": {
+        "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+        "strength_model": 0.75,
+        "strength_clip": 0.75,
+        "model": ["1", 0],
+        "clip": ["2", 0]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Turbo LoRA (0.75 strength)",
+        "description": "Apply Turbo LoRA for ultra-fast 8-step generation"
+      }
+    },
+    "7": {
+      "inputs": {
+        "lora_name": "facebookQuality.3t4R.safetensors",
+        "strength_model": 0.65,
+        "strength_clip": 0.65,
+        "model": ["6", 0],
+        "clip": ["6", 1]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Quality Enhancement LoRA (0.65 strength)",
+        "description": "Apply social media/web quality enhancement for polished UI aesthetics"
+      }
+    },
+    "8": {
+      "inputs": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      },
+      "class_type": "EmptyLatentImage",
+      "_meta": {
+        "title": "Initialize Latent Space (1024x1024)",
+        "description": "Create empty latent image for generation"
+      }
+    },
+    "9": {
+      "inputs": {
+        "seed": 0,
+        "steps": 8,
+        "cfg": 1.8,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1.0,
+        "model": ["7", 0],
+        "positive": ["4", 0],
+        "negative": ["5", 0],
+        "latent_image": ["8", 0]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "Turbo Sampler - 8 Steps, CFG 1.8, Euler",
+        "description": "Ultra-fast sampling optimized for UI/UX generation. 8 steps with Euler sampler provides clean results in 4-6 seconds."
+      }
+    },
+    "10": {
+      "inputs": {
+        "samples": ["9", 0],
+        "vae": ["3", 0]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode to Image",
+        "description": "Decode latent representation back to image"
+      }
+    },
+    "11": {
+      "inputs": {
+        "image": ["10", 0],
+        "model": "BiRefNet-general",
+        "mask_blur": 2,
+        "mask_offset": 0,
+        "invert_output": false,
+        "refine_foreground": true,
+        "background": "Alpha",
+        "background_color": "#000000"
+      },
+      "class_type": "BiRefNetRMBG",
+      "_meta": {
+        "title": "BiRefNet Background Removal",
+        "description": "Remove background automatically and create transparent alpha channel. Uses BiRefNet-general for balanced performance across UI elements."
+      }
+    },
+    "12": {
+      "inputs": {
+        "images": ["11", 0],
+        "filename_prefix": "ui_design_",
+        "format": "png",
+        "quality": 95,
+        "lossless_webp": false,
+        "method": -1
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Transparent PNG (Final Output)",
+        "description": "Save generated UI/UX asset as PNG with transparent background. Files saved to ComfyUI/output/ directory."
+      }
+    },
+    "13": {
+      "inputs": {
+        "images": ["10", 0],
+        "filename_prefix": "ui_design_original_",
+        "format": "png",
+        "quality": 95,
+        "lossless_webp": false,
+        "method": -1
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Original (Before Background Removal)",
+        "description": "Optional: Save the generated image before background removal for reference"
+      }
+    },
+    "14": {
+      "inputs": {
+        "images": ["11", 1]
+      },
+      "class_type": "PreviewImage",
+      "_meta": {
+        "title": "Preview Refined Image",
+        "description": "Preview the image after background removal in ComfyUI web UI"
+      }
+    }
+  },
+  "workflow_configuration": {
+    "performance_tuning": {
+      "steps": 8,
+      "cfg": 1.8,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "reason": "8 steps with low CFG provides clean UI elements without artifacts. Euler sampler optimal for this configuration. Simple scheduler for consistent results."
+    },
+    "lora_stacking": {
+      "primary_lora": {
+        "name": "FLUX.1-Turbo-Alpha",
+        "strength": 0.75,
+        "purpose": "Fast inference with quality preservation",
+        "effect": "Enables 8-step generation without quality loss"
+      },
+      "secondary_lora": {
+        "name": "facebookQuality",
+        "strength": 0.65,
+        "purpose": "Web/UI aesthetic enhancement",
+        "effect": "Polishes results for web and app interfaces"
+      },
+      "total_lora_weight": 1.4,
+      "stacking_order": "Turbo first (affects model), then Quality (post-processing refinement)"
+    },
+    "background_removal": {
+      "method": "BiRefNetRMBG",
+      "model_variant": "BiRefNet-general",
+      "mask_blur": 2,
+      "refine_foreground": true,
+      "output_format": "Alpha (transparent)",
+      "purpose": "Create design assets with clean transparent backgrounds for UI mockups"
+    },
+    "resolution_choice": {
+      "width": 1024,
+      "height": 1024,
+      "aspect_ratio": "1:1 square",
+      "reason": "Standard for UI components, icon exports, and interface elements"
+    }
+  },
+  "usage_instructions": {
+    "basic_usage": {
+      "step_1": "Ensure ComfyUI server is running: .\\start-comfy.ps1",
+      "step_2": "Submit workflow: .\\run-workflow.ps1 -WorkflowPath '.\\workflows\\uiux_turbo.json'",
+      "step_3": "Check ComfyUI/output/ for generated PNG files with transparent backgrounds",
+      "estimated_time": "4-6 seconds per image on RTX 3090"
+    },
+    "customization_guide": {
+      "change_prompt": "Edit 'positive' text in node 4 to describe your desired UI elements",
+      "adjust_speed": "Reduce CFG to 1.5 for 3-4 second generation (less refined)",
+      "increase_quality": "Increase CFG to 2.0-2.2 for more detail (slightly slower 6-8 seconds)",
+      "remove_bg_tuning": "Adjust mask_blur (0-4) in node 11 for edge smoothness",
+      "background_color": "Change background_color in node 11 to use solid color instead of transparency"
+    },
+    "prompt_examples": {
+      "dashboard": "clean dashboard UI, modern minimalist design, buttons, cards, data visualization, responsive grid layout, professional interface",
+      "mobile_app": "mobile app interface, iOS design, clean buttons, navigation bar, cards layout, modern aesthetic, flat design",
+      "landing_page": "landing page hero section, modern website design, call-to-action button, clean typography, professional layout",
+      "icon_set": "icon set design, minimalist icons, geometric shapes, line icons, flat style, web icons, professional appearance",
+      "button_collection": "UI button designs, various button states, hover effects, clean modern style, professional appearance, flat design"
+    }
+  },
+  "output_specifications": {
+    "format": "PNG with Alpha Channel",
+    "dimensions": "1024x1024 pixels",
+    "background": "Transparent",
+    "naming_convention": "ui_design_[timestamp].png",
+    "location": "D:\\workspace\\fluxdype\\ComfyUI\\output\\",
+    "quality": "95% PNG quality (best for design assets)",
+    "use_cases": [
+      "UI mockups and prototypes",
+      "Icon generation",
+      "Button and component creation",
+      "App interface assets",
+      "Web design elements",
+      "Design system components"
+    ]
+  },
+  "optimization_notes": {
+    "gpu_optimization": "Flux Kria FP8 reduces memory usage by 50% vs FP16 while maintaining quality",
+    "inference_speed": "Turbo LoRA enables 8-step generation optimized for RTX 3090 VRAM constraints",
+    "quality_balance": "CFG 1.8 provides clean output without over-processing (avoids artifacts)",
+    "background_removal": "BiRefNet-general model balances quality and speed for UI elements",
+    "memory_usage": "Estimated 9-11 GB VRAM usage on RTX 3090 (efficient for simultaneous batch processing)"
+  },
+  "troubleshooting": {
+    "out_of_memory": "If CUDA OOM error: Reduce batch_size to 1 in node 8, or restart ComfyUI",
+    "background_removal_poor": "Adjust mask_blur to 1-3 or switch to BiRefNet-portrait for UI elements with people",
+    "generation_too_slow": "Verify flux1-krea-dev_fp8_scaled.safetensors is loaded (check ComfyUI logs)",
+    "transparent_not_working": "Ensure PNG save node has format='png' and quality=95",
+    "color_artifacts": "Increase CFG to 2.0 or disable refine_foreground in node 11"
+  }
+}

@@ -1,0 +1,122 @@
+﻿[
+    {
+        "size_gb":  4.975,
+        "path":  "C:\\Users\\Jdmal\\ComfyUI",
+        "type":  "ComfyUI Installation",
+        "reason":  "Active installation on D: drive (201.611 GB)",
+        "category":  "DUPLICATE",
+        "recommendation":  "DELETE - Use D: drive installation exclusively"
+    },
+    {
+        "size_gb":  4.949,
+        "path":  "C:\\Users\\Jdmal\\ComfyUI\\venv",
+        "type":  "Python venv",
+        "reason":  "Active venv on D: drive (5.848 GB)",
+        "category":  "DUPLICATE",
+        "recommendation":  "DELETE - Use D: drive venv exclusively"
+    },
+    {
+        "size_gb":  0.214,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\Facebookq-fotos.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.285,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\Facebook_Quality_Photos.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.053,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\ponyChar4ByStableYogi.uIsD.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.634,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\realism20lora20by.cpW5.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.041,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\realismLoraByStable.VvFC.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.041,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\Realism_Lora_By_Stable_yogi_SDXL8.1.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.053,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\superEyeDetailerBy.4EGS.safetensors",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.062,
+        "path":  "C:\\Users\\Jdmal\\Downloads\\4x_NickelbackFS_72000_G.pth",
+        "type":  "Model File",
+        "reason":  "Downloaded model not yet moved to D: drive",
+        "category":  "ARCHIVE",
+        "recommendation":  "MOVE to D:\\workspace\\fluxdype\\ComfyUI\\models\\\u003cappropriate_folder\u003e"
+    },
+    {
+        "size_gb":  0.033,
+        "path":  "C:\\Users\\Jdmal\\.hf-cli\\venv",
+        "type":  "Python venv",
+        "reason":  "Separate project venv",
+        "category":  "ARCHIVE",
+        "recommendation":  "KEEP if actively used, otherwise DELETE"
+    },
+    {
+        "size_gb":  0.006,
+        "path":  "C:\\Users\\Jdmal\\Workspace\\True_Nas\\.venv",
+        "type":  "Python venv",
+        "reason":  "Separate project venv",
+        "category":  "ARCHIVE",
+        "recommendation":  "KEEP if actively used, otherwise DELETE"
+    },
+    {
+        "size_gb":  0.019,
+        "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype",
+        "type":  "Claude Cache",
+        "reason":  "Active Claude Code project cache",
+        "category":  "ACTIVE",
+        "recommendation":  "KEEP - Required for Claude Code operation"
+    },
+    {
+        "size_gb":  0,
+        "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+        "type":  "Claude Cache",
+        "reason":  "Active Claude Code project cache",
+        "category":  "ACTIVE",
+        "recommendation":  "KEEP - Required for Claude Code operation"
+    },
+    {
+        "size_gb":  0.057,
+        "path":  "C:\\Users\\Jdmal\\Workspace\\WSL_Comfy",
+        "type":  "Old ComfyUI Test",
+        "reason":  "Old WSL experiment, superseded by D: drive installation",
+        "category":  "OBSOLETE",
+        "recommendation":  "DELETE"
+    }
+]

@@ -1,0 +1,27 @@
+# SpiritAtlas - Moon Phase Illustrations (200x200 each)
+# 8 moon phase cycle
+# Generate with: .\batch-generate.ps1 -File prompts_spiritatlas_moon_phases.txt -Resolution square -Quality high
+
+# New Moon
+A new moon phase illustration. Completely dark circular moon with faint subtle outline glow in soft white-blue ethereal light. Realistic lunar surface barely visible in shadow. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal glow around edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Waxing Crescent
+A waxing crescent moon phase illustration. Thin crescent illuminated on right side, growing phase. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Shadow side barely visible. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around crescent edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# First Quarter
+A first quarter moon phase illustration. Right half completely illuminated, left half in shadow. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Clean division line down center. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around illuminated edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Waxing Gibbous
+A waxing gibbous moon phase illustration. More than half illuminated on right side, growing toward full. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Small shadow on left edge. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around illuminated edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Full Moon
+A full moon phase illustration. Completely illuminated bright circular moon. Realistic lunar surface in moonlight silver (#E2E8F0) showing full detail of craters and maria across entire surface. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Strong ethereal white-blue glow radiating around entire moon creating halo effect. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Waning Gibbous
+A waning gibbous moon phase illustration. More than half illuminated on left side, shrinking from full. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Small shadow on right edge. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around illuminated edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Last Quarter
+A last quarter moon phase illustration. Left half completely illuminated, right half in shadow. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Clean division line down center. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around illuminated edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.
+
+# Waning Crescent
+A waning crescent moon phase illustration. Thin crescent illuminated on left side, shrinking phase. Realistic lunar surface in moonlight silver (#E2E8F0) showing craters and maria on lit portion. Shadow side barely visible. The moon floats on deep night sky background (#1E1B4B) with scattered tiny stars. Soft ethereal white-blue glow around crescent edges. Realistic lunar surface texture, astronomical accuracy, ethereal moonlight glow, spiritual moon art, 4K quality.

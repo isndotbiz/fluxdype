@@ -1,0 +1,185 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    AI MODELS SCATTERED INVENTORY                           ║
+║                        Generated: 2025-12-10                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ LOCATION OVERVIEW                                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+📍 C:\Users\Jdmal\Downloads
+   ├─ 10 models (1.4GB)
+   ├─ Types: LoRAs (8), Upscaler (1), Embeddings (2)
+   └─ ACTION: MOVE to fluxdype ✓
+
+📍 D:\ai-workspace\ComfyUI\models
+   ├─ 31GB total
+   ├─ Status: OLD abandoned installation
+   ├─ Contains: Flux models, LoRAs, upscalers (all duplicates)
+   └─ ACTION: DELETE after verification 🗑️
+
+📍 D:\jdmal\ComfyUI\models
+   ├─ 44GB total
+   ├─ Status: ACTIVE secondary installation
+   ├─ Contains: 20+ unique LoRAs, Flux models
+   └─ ACTION: KEEP (active workflows) ✓
+
+📍 D:\jdmal\llama.cpp\models
+   ├─ 50MB total
+   ├─ Contains: 17 vocab files (.gguf)
+   └─ ACTION: KEEP (required by llama.cpp) ✓
+
+📍 D:\models
+   ├─ 139GB total
+   ├─ Contains: 13 LLM models (.gguf)
+   ├─ organized/ (9 models, 107GB)
+   ├─ rtx4060ti-16gb/ (4 models, 28GB)
+   └─ ACTION: KEEP (organized LLM collection) ✓
+
+📍 D:\Optimum\stable-diffusion-webui
+   ├─ 182GB total
+   ├─ Status: ACTIVE SDXL installation
+   ├─ Contains: 8 checkpoints, 3 ControlNets, 15 LoRAs
+   ├─ Temp folders: bsy_fp16/ (6.5GB), lora_temp/ (2.5GB)
+   └─ ACTION: KEEP (clean temp folders -9GB) ✓
+
+📍 Recycle Bins
+   ├─ C:\$Recycle.Bin: 2 .pth files
+   ├─ D:\$RECYCLE.BIN: 6 .safetensors files
+   └─ ACTION: EMPTY (frees ~1GB) 🗑️
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ BREAKDOWN BY FILE TYPE                                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+🤖 DIFFUSION MODELS (.safetensors)
+   ├─ Flux 1 Dev FP8: 3 copies (12GB each) - 36GB total
+   │  ├─ fluxdype ✓
+   │  ├─ ai-workspace (duplicate)
+   │  └─ jdmal (duplicate)
+   ├─ Flux Kontext: 2 copies (12GB each) - 24GB total
+   ├─ SDXL Checkpoints: 8 models (74GB total) in Optimum
+   └─ Flux NSFW: 2 models (35GB total) in Optimum
+
+📝 TEXT ENCODERS (.safetensors)
+   ├─ clip_l.safetensors: 3 copies (235MB each)
+   ├─ t5xxl_fp16.safetensors: 2 copies (117MB each)
+   └─ t5xxl_fp8_e4m3fn_scaled.safetensors: 2 copies (4.9GB each)
+
+🎨 LORAS (.safetensors)
+   ├─ Downloads: 8 models (1.3GB) → MOVE
+   ├─ fluxdype: 8 models (3.1GB)
+   ├─ jdmal: 20 models (5.5GB) - many unique
+   ├─ ai-workspace: 5 models (413MB) - mostly duplicates
+   └─ Optimum: 15 models (3.3GB) - SDXL specific
+
+📊 EMBEDDINGS (.safetensors, .pt)
+   ├─ fluxdype: 11 embeddings (5.4MB)
+   ├─ Optimum: 17 embeddings (5.4MB)
+   └─ Downloads: 2 embeddings (1.1MB) → MOVE
+
+🔍 CONTROLNET (.safetensors)
+   └─ Optimum: 3 models (7.2GB) - SDXL only
+
+⬆️  UPSCALERS (.pth)
+   ├─ RealESRGAN_x4plus.pth: 3 copies (64MB each)
+   ├─ codeformer.pth: 2 copies (360MB each)
+   ├─ GFPGANv1.4.pth: 2 copies (333MB each)
+   ├─ 4x_NickelbackFS_72000_G.pth: 2 copies (64MB)
+   └─ Others: 4x-UltraSharp, 4x_NMKD-Siax
+
+🧠 LLM MODELS (.gguf)
+   ├─ Llama 3.3 70B: 21GB
+   ├─ Qwen3 Coder 30B: 18GB
+   ├─ Dolphin Mistral 24B: 14GB
+   ├─ Phi-4: 12GB
+   ├─ Various 7B-14B models: 74GB
+   └─ Vocab files: 17 files (50MB)
+
+🎞️  VAE (.safetensors)
+   ├─ flux-vae-bf16.safetensors: 2 copies (160MB each)
+   ├─ ae.safetensors: 2 copies (320MB each)
+   └─ sdxl_vae.safetensors: 1 copy (335MB)
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ SIZE ANALYSIS                                                           │
+└─────────────────────────────────────────────────────────────────────────┘
+
+CURRENT TOTAL: ~421GB
+
+Distribution:
+  ██████████████████████████████████████████ Optimum SDXL (182GB) 43%
+  ███████████████████████████████            LLM Models (139GB)   33%
+  ██████████                                 jdmal ComfyUI (44GB) 10%
+  ███████                                    ai-workspace (31GB)   7%
+  ████                                       fluxdype (15GB)       4%
+  █                                          Other (10GB)          2%
+
+AFTER CLEANUP: ~372GB (-49GB freed)
+
+Distribution after:
+  ██████████████████████████████████████     Optimum SDXL (173GB) 46%
+  ███████████████████████████████            LLM Models (139GB)   37%
+  ██████████                                 jdmal ComfyUI (44GB) 12%
+  ████                                       fluxdype (16.4GB)     4%
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ DUPLICATES DETECTED                                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+🔴 Critical Duplicates (Large files):
+   • flux1-dev-fp8.safetensors (12GB) - 3 copies = 24GB waste
+   • flux1-kontext (12GB) - 2 copies = 12GB waste
+   • t5xxl_fp8_e4m3fn_scaled (4.9GB) - 2 copies = 4.9GB waste
+
+🟡 Medium Duplicates:
+   • RealESRGAN_x4plus.pth (64MB) - 3 copies
+   • codeformer.pth (360MB) - 2 copies
+   • GFPGANv1.4.pth (333MB) - 2 copies
+
+🟢 Small Duplicates:
+   • facebookQuality LoRA (293MB) - 3 copies
+   • NSFW_UNLOCKED LoRA (293MB) - 3 copies
+   • Various embeddings (KB-sized)
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ RECOMMENDED ACTIONS                                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+[IMMEDIATE] Run consolidation script:
+  ❯ cd D:\workspace\fluxdype
+  ❯ .\consolidate_scattered_models.ps1
+  
+  Result: +1.4GB to fluxdype, 10 models organized
+
+[IMMEDIATE] Empty recycle bins:
+  Result: ~1GB freed
+
+[AFTER TEST] Delete ai-workspace:
+  ❯ Remove-Item -Recurse -Force "D:\ai-workspace\ComfyUI"
+  
+  Result: 31GB freed
+
+[AFTER TEST] Clean Optimum temp:
+  ❯ Remove-Item "D:\Optimum\bsy_fp16\*.safetensors"
+  ❯ Remove-Item -Recurse "D:\Optimum\lora_temp"
+  
+  Result: 9GB freed
+
+[OPTIONAL] Consider consolidating jdmal into fluxdype:
+  Result: 44GB freed (only if workflows allow)
+
+TOTAL POTENTIAL SAVINGS: 41-85GB
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ FILES GENERATED                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+📄 SCATTERED_MODELS_AUDIT.md          - Comprehensive detailed report
+📄 MODELS_CLEANUP_QUICKREF.txt        - Quick reference guide
+📄 MODELS_INVENTORY.txt               - This visual inventory (you are here)
+📄 consolidate_scattered_models.ps1   - Automated consolidation script
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║ NEXT STEP: Run .\consolidate_scattered_models.ps1                         ║
+╚════════════════════════════════════════════════════════════════════════════╝

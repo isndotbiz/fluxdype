@@ -1,0 +1,269 @@
+{
+  "test_configuration": {
+    "name": "Production Photorealistic Turbo - Test Configuration",
+    "purpose": "Validate workflow with minimal resource requirements before full deployment",
+    "version": "1.0"
+  },
+  "test_scenarios": {
+    "scenario_1_minimal_quality_check": {
+      "name": "Minimal Quality Check (Fast Test)",
+      "description": "Quick 3-4 second validation test with minimal quality expectations",
+      "parameters": {
+        "steps": 8,
+        "cfg": 1.5,
+        "strength_model": 0.8,
+        "strength_clip": 0.8,
+        "batch_size": 1,
+        "resolution": "1024x1024"
+      },
+      "expected_time_seconds": "3-4",
+      "expected_quality": "Good (acceptable for prototyping)",
+      "use_case": "Verify workflow functions before full validation",
+      "success_criteria": [
+        "Image generates without errors",
+        "No CUDA out of memory errors",
+        "Output is recognizable and photorealistic",
+        "Generation time is 3-5 seconds"
+      ]
+    },
+    "scenario_2_production_standard": {
+      "name": "Production Standard (Recommended Default)",
+      "description": "Full production configuration with optimal photorealism/speed balance",
+      "parameters": {
+        "steps": 10,
+        "cfg": 2.0,
+        "strength_model": 0.75,
+        "strength_clip": 0.75,
+        "batch_size": 1,
+        "resolution": "1024x1024"
+      },
+      "expected_time_seconds": "5-8",
+      "expected_quality": "Excellent (museum-grade photorealism)",
+      "use_case": "Standard production use, all commercial work",
+      "success_criteria": [
+        "Image generates without errors",
+        "Output is professional photorealistic quality",
+        "Sharp focus and high detail preserved",
+        "Generation time is 5-8 seconds",
+        "VRAM usage stays under 24GB",
+        "No artifacts or visible defects"
+      ]
+    },
+    "scenario_3_premium_quality": {
+      "name": "Premium Quality (High-Value Work)",
+      "description": "Enhanced quality configuration for high-value products/gallery work",
+      "parameters": {
+        "steps": 12,
+        "cfg": 2.5,
+        "strength_model": 0.7,
+        "strength_clip": 0.7,
+        "batch_size": 1,
+        "resolution": "1024x1024"
+      },
+      "expected_time_seconds": "7-10",
+      "expected_quality": "Very High (maximum detail within Turbo window)",
+      "use_case": "Premium product photography, gallery-quality work",
+      "success_criteria": [
+        "Image generates without errors",
+        "Output exceeds production standard quality",
+        "Even finer details are preserved",
+        "Generation time is 7-10 seconds",
+        "VRAM stays under 24GB",
+        "No visible quality degradation"
+      ]
+    },
+    "scenario_4_batch_processing": {
+      "name": "Batch Processing (Throughput Test)",
+      "description": "Generate 4-image batch to test sustained performance and VRAM stability",
+      "parameters": {
+        "steps": 10,
+        "cfg": 2.0,
+        "strength_model": 0.75,
+        "strength_clip": 0.75,
+        "batch_size": 4,
+        "resolution": "1024x1024"
+      },
+      "expected_time_seconds": "20-32",
+      "expected_quality": "Consistent photorealism across batch",
+      "use_case": "Production batch generation, e-commerce catalog generation",
+      "success_criteria": [
+        "All 4 images generate without errors",
+        "Total time is 20-32 seconds (5-8 sec per image)",
+        "All images have consistent quality",
+        "VRAM never exceeds 24GB even between batches",
+        "GPU temperature stays 65-75C",
+        "No memory leaks (VRAM resets between images)"
+      ]
+    }
+  },
+  "validation_checklist": {
+    "pre_deployment": [
+      {
+        "check": "All 5 models present",
+        "command": "dir ComfyUI\\models\\diffusion_models\\flux1-krea-dev_fp8_scaled.safetensors",
+        "expected": "File exists, ~12GB size"
+      },
+      {
+        "check": "CLIP encoders present",
+        "command": "dir ComfyUI\\models\\text_encoders\\clip_l.safetensors ComfyUI\\models\\text_encoders\\t5xxl_fp16.safetensors",
+        "expected": "Both files exist, ~19.2GB combined"
+      },
+      {
+        "check": "VAE present",
+        "command": "dir ComfyUI\\models\\vae\\ae.safetensors",
+        "expected": "File exists, ~1.7GB"
+      },
+      {
+        "check": "Turbo LoRA present",
+        "command": "dir ComfyUI\\models\\loras\\FLUX.1-Turbo-Alpha.safetensors",
+        "expected": "File exists, ~210MB"
+      },
+      {
+        "check": "ComfyUI server responsive",
+        "command": "curl http://localhost:8188",
+        "expected": "Server returns HTTP 200, web UI loads"
+      },
+      {
+        "check": "GPU VRAM available",
+        "command": "nvidia-smi | grep 'Free'",
+        "expected": "At least 24GB free VRAM"
+      },
+      {
+        "check": "Workflow JSON valid",
+        "command": "python -m json.tool workflows\\production_photorealistic_turbo.json",
+        "expected": "JSON parses without errors"
+      }
+    ],
+    "post_generation": [
+      {
+        "check": "Image file created",
+        "command": "dir ComfyUI\\output\\production_photo_*.png",
+        "expected": "PNG file exists in output directory"
+      },
+      {
+        "check": "Image dimensions correct",
+        "command": "Image properties or Python PIL check",
+        "expected": "1024x1024 pixels"
+      },
+      {
+        "check": "Image file size reasonable",
+        "expected": "500KB - 2MB (normal PNG compression)"
+      },
+      {
+        "check": "Image visual quality acceptable",
+        "expected": "Professional photorealistic appearance"
+      },
+      {
+        "check": "No visible artifacts",
+        "expected": "No noise, distortion, or degradation"
+      },
+      {
+        "check": "VRAM fully released",
+        "command": "nvidia-smi | grep 'Free'",
+        "expected": "Free VRAM back to pre-generation level"
+      }
+    ]
+  },
+  "performance_benchmarks": {
+    "single_image_generation": {
+      "configuration": "Production standard (10 steps, CFG 2.0, 0.75 strength)",
+      "expected_time": "5-8 seconds",
+      "tolerance_range": "3-10 seconds (acceptable variance)",
+      "gpu_utilization": "95-99%",
+      "cpu_utilization": "5-10%",
+      "peak_vram": "22-24GB",
+      "gpu_temperature": "65-75C"
+    },
+    "batch_4_generation": {
+      "configuration": "Production standard x4 images",
+      "expected_time": "20-32 seconds total",
+      "per_image_time": "5-8 seconds (consistent with single)",
+      "throughput": "7-12 images per minute",
+      "gpu_temperature": "70-80C (sustained load)"
+    },
+    "memory_stability": {
+      "vram_peak": "24GB (RTX 3090 full capacity)",
+      "vram_average": "18-20GB during generation",
+      "vram_idle": "0-2GB after generation (fully released)",
+      "memory_leak_risk": "None (tested, no accumulation)"
+    }
+  },
+  "error_scenarios": {
+    "cuda_out_of_memory": {
+      "cause": "Insufficient GPU VRAM",
+      "solution": [
+        "Reduce batch_size to 1",
+        "Restart ComfyUI to clear cache",
+        "Close other GPU-intensive applications"
+      ],
+      "recovery": "Should not occur at standard parameters with RTX 3090"
+    },
+    "model_not_found": {
+      "cause": "Missing model file in ComfyUI/models/",
+      "solution": [
+        "Verify file exists at correct path",
+        "Run setup script to download missing models",
+        "Check file permissions"
+      ],
+      "recovery": "Will not continue until all models present"
+    },
+    "connection_refused": {
+      "cause": "ComfyUI server not running on localhost:8188",
+      "solution": [
+        "Start ComfyUI: .\\start-comfy.ps1",
+        "Wait 5-10 seconds for server startup",
+        "Verify browser can access http://localhost:8188"
+      ],
+      "recovery": "Immediate once server starts"
+    },
+    "json_parse_error": {
+      "cause": "Corrupted or invalid JSON workflow file",
+      "solution": [
+        "Validate JSON: python -m json.tool production_photorealistic_turbo.json",
+        "Re-download workflow file if corrupted",
+        "Check for encoding issues (should be UTF-8)"
+      ],
+      "recovery": "File must be valid before use"
+    }
+  },
+  "success_indicators": {
+    "workflow_loaded": "ComfyUI web UI displays workflow without errors",
+    "generation_started": "Server reports 'Queued prompt' in console",
+    "generation_in_progress": "Server reports sampling steps: 1/10, 2/10, ... 10/10",
+    "generation_complete": "Server reports 'Model executed successfully'",
+    "image_saved": "PNG file appears in ComfyUI/output/ with production_photo_ prefix",
+    "quality_acceptable": "Image shows clear photorealistic detail, no artifacts"
+  },
+  "testing_instructions": {
+    "step_1_verify_models": "Run pre-deployment validation checklist above",
+    "step_2_start_server": "Execute .\\start-comfy.ps1 in PowerShell",
+    "step_3_load_workflow": "Open http://localhost:8188, load production_photorealistic_turbo.json",
+    "step_4_generate_test_image": "Click 'Queue' button in web UI",
+    "step_5_monitor_generation": "Watch console for progress messages and timing",
+    "step_6_inspect_output": "Check ComfyUI/output/ for production_photo_*.png file",
+    "step_7_validate_quality": "Open PNG image and inspect for quality and artifacts",
+    "step_8_run_batch_test": "Generate 4-image batch to test throughput and stability",
+    "step_9_document_metrics": "Record generation times, VRAM usage, temperatures",
+    "step_10_production_ready": "If all checks pass, workflow is production-ready"
+  },
+  "notes": {
+    "important": [
+      "Always verify all 5 models are present before deployment",
+      "RTX 3090 24GB VRAM is minimum requirement",
+      "Production parameters (10 steps, CFG 2.0) are optimal - don't modify without reason",
+      "Single Turbo LoRA design prevents conflicts - don't add other LoRAs",
+      "CFG 2.0 is critical for photorealism - don't change lightly"
+    ],
+    "optimization_tips": [
+      "First generation may be slightly slower (model compilation/caching)",
+      "Subsequent generations will be faster as caches warm up",
+      "Sustained batch processing maintains 5-8 sec per image",
+      "GPU temperature rising slightly with batches is normal behavior"
+    ],
+    "monitoring": [
+      "Watch GPU memory usage in Task Manager during generation",
+      "Check GPU temperature stays below 80C during sustained loads",
+      "Monitor generation times - should be consistent (5-8 seconds)"
+    ]
+  }
+}

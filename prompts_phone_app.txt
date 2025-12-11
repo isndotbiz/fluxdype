@@ -1,0 +1,39 @@
+# Ultra-Realistic Phone App Image Prompts
+# One prompt per line. Lines starting with # are ignored.
+# Optimized for high-quality mobile viewing.
+
+# Portrait Photography
+professional headshot of confident businesswoman, natural lighting, soft background blur, corporate elegance
+candid portrait of young man smiling, golden hour lighting, outdoor natural setting, warm tones
+fitness model portrait, athletic pose, gym environment, dramatic lighting, motivated expression
+beauty portrait of woman with natural makeup, studio lighting, clean white background, professional
+
+# Lifestyle & Fashion
+stylish woman walking in modern city street, fashionable outfit, urban backdrop, confident stride
+casual portrait of person enjoying coffee in trendy cafe, cozy atmosphere, natural window light
+group of friends laughing together, outdoor park setting, bright daylight, genuine happiness
+entrepreneur working on laptop in modern workspace, focused expression, minimalist office
+
+# Nature & Outdoor
+person hiking mountain trail, breathtaking landscape view, adventure spirit, vibrant nature
+woman practicing yoga on beach at sunrise, peaceful atmosphere, ocean waves, serene mood
+portrait in flower field, colorful blooms, soft natural lighting, romantic atmosphere
+outdoor meditation in forest setting, dappled sunlight, peaceful expression, natural harmony
+
+# Social Media Optimized
+instagram-worthy selfie angle, attractive person, perfect lighting, trendy aesthetic
+fashion influencer outfit photo, full body shot, neutral urban background, stylish pose
+food blogger enjoying healthy meal, bright restaurant setting, appetizing composition
+travel content creator at scenic location, adventure gear, stunning backdrop, authentic smile
+
+# Product & Commercial
+hands holding smartphone with blank screen, modern device, clean background, professional lighting
+person using laptop in creative workspace, tech-savvy environment, productive atmosphere
+workout enthusiast with fitness gear, gym setting, motivational energy, athletic build
+beauty product application close-up, flawless skin, luxury aesthetic, soft focus background
+
+# Seasonal & Thematic
+cozy winter portrait with warm sweater, holiday atmosphere, soft indoor lighting
+spring fashion portrait in blooming garden, fresh colors, cheerful mood, natural beauty
+summer beach portrait, casual attire, ocean backdrop, sun-kissed glow, relaxed vibe
+autumn outdoor portrait, fall foliage colors, warm tones, comfortable fashion

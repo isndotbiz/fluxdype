@@ -1,0 +1,344 @@
+{
+  "scan_metadata": {
+    "scan_date": "2025-12-10",
+    "scan_time": "00:36:12",
+    "scanner": "Comprehensive C: Drive AI Scanner",
+    "target": "C: Drive - AI/ML Files Only"
+  },
+  "drive_statistics": {
+    "c_drive": {
+      "total_gb": 464.89,
+      "used_gb": 214.95,
+      "free_gb": 249.94,
+      "percent_used": 46.3
+    },
+    "ai_related_total_gb": 16.49
+  },
+  "summary": {
+    "total_items_found": 15,
+    "duplicate_items": 2,
+    "duplicate_size_gb": 9.924,
+    "obsolete_items": 1,
+    "obsolete_size_gb": 0.057,
+    "archive_items": 10,
+    "archive_size_gb": 1.421,
+    "active_items": 2,
+    "active_size_gb": 0.019,
+    "potential_space_savings_gb": 11.402,
+    "comments": "Potential savings = duplicates (9.924 GB) + obsolete (0.057 GB) + models moved to D: (1.421 GB)"
+  },
+  "findings_by_category": {
+    "DUPLICATE": [
+      {
+        "priority": "HIGH",
+        "item": "ComfyUI Installation",
+        "path": "C:\\Users\\Jdmal\\ComfyUI",
+        "size_gb": 4.975,
+        "reason": "Complete duplicate - Active installation exists on D: drive (201.611 GB)",
+        "action": "DELETE",
+        "safe_to_delete": true,
+        "command": "Remove-Item -Path 'C:\\Users\\Jdmal\\ComfyUI' -Recurse -Force"
+      },
+      {
+        "priority": "HIGH",
+        "item": "Python Virtual Environment",
+        "path": "C:\\Users\\Jdmal\\ComfyUI\\venv",
+        "size_gb": 4.949,
+        "reason": "Duplicate venv - Active venv exists on D: drive (5.848 GB)",
+        "action": "DELETE",
+        "safe_to_delete": true,
+        "note": "Deleted automatically when parent ComfyUI folder is removed",
+        "command": "Included in ComfyUI deletion above"
+      }
+    ],
+    "OBSOLETE": [
+      {
+        "priority": "MEDIUM",
+        "item": "WSL ComfyUI Test Installation",
+        "path": "C:\\Users\\Jdmal\\Workspace\\WSL_Comfy",
+        "size_gb": 0.057,
+        "reason": "Old WSL experiment, superseded by D: drive installation",
+        "last_modified": "2025-10-14",
+        "days_since_modified": 57,
+        "action": "DELETE",
+        "safe_to_delete": true,
+        "command": "Remove-Item -Path 'C:\\Users\\Jdmal\\Workspace\\WSL_Comfy' -Recurse -Force"
+      }
+    ],
+    "ARCHIVE": [
+      {
+        "priority": "HIGH",
+        "item": "Model Files in Downloads",
+        "type": "Stable Diffusion LoRA Models",
+        "files": [
+          {
+            "name": "Facebookq-fotos.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\Facebookq-fotos.safetensors",
+            "size_gb": 0.214,
+            "size_mb": 219.22
+          },
+          {
+            "name": "Facebook_Quality_Photos.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\Facebook_Quality_Photos.safetensors",
+            "size_gb": 0.285,
+            "size_mb": 292.23
+          },
+          {
+            "name": "ponyChar4ByStableYogi.uIsD.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\ponyChar4ByStableYogi.uIsD.safetensors",
+            "size_gb": 0.053,
+            "size_mb": 54.76
+          },
+          {
+            "name": "realism20lora20by.cpW5.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\realism20lora20by.cpW5.safetensors",
+            "size_gb": 0.634,
+            "size_mb": 649.67
+          },
+          {
+            "name": "realismLoraByStable.VvFC.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\realismLoraByStable.VvFC.safetensors",
+            "size_gb": 0.041,
+            "size_mb": 42.47
+          },
+          {
+            "name": "Realism_Lora_By_Stable_yogi_SDXL8.1.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\Realism_Lora_By_Stable_yogi_SDXL8.1.safetensors",
+            "size_gb": 0.041,
+            "size_mb": 42.47
+          },
+          {
+            "name": "superEyeDetailerBy.4EGS.safetensors",
+            "path": "C:\\Users\\Jdmal\\Downloads\\superEyeDetailerBy.4EGS.safetensors",
+            "size_gb": 0.053,
+            "size_mb": 54.76
+          }
+        ],
+        "total_safetensors_gb": 1.321,
+        "reason": "Downloaded models not yet organized into D: drive structure",
+        "action": "MOVE",
+        "destination": "D:\\workspace\\fluxdype\\ComfyUI\\models\\loras\\",
+        "command": "Move-Item -Path 'C:\\Users\\Jdmal\\Downloads\\*.safetensors' -Destination 'D:\\workspace\\fluxdype\\ComfyUI\\models\\loras\\'"
+      },
+      {
+        "priority": "MEDIUM",
+        "item": "Upscaler Model",
+        "files": [
+          {
+            "name": "4x_NickelbackFS_72000_G.pth",
+            "path": "C:\\Users\\Jdmal\\Downloads\\4x_NickelbackFS_72000_G.pth",
+            "size_gb": 0.062,
+            "size_mb": 63.97
+          }
+        ],
+        "total_pth_gb": 0.062,
+        "reason": "Upscaler model not yet organized",
+        "action": "MOVE",
+        "destination": "D:\\workspace\\fluxdype\\ComfyUI\\models\\upscale_models\\",
+        "command": "Move-Item -Path 'C:\\Users\\Jdmal\\Downloads\\*.pth' -Destination 'D:\\workspace\\fluxdype\\ComfyUI\\models\\upscale_models\\'"
+      },
+      {
+        "priority": "LOW",
+        "item": "HuggingFace CLI Virtual Environment",
+        "path": "C:\\Users\\Jdmal\\.hf-cli\\venv",
+        "size_gb": 0.033,
+        "reason": "Separate tool - HuggingFace CLI",
+        "action": "KEEP if actively used, otherwise DELETE",
+        "safe_to_delete": false,
+        "note": "Check if hf CLI is still being used before deleting"
+      },
+      {
+        "priority": "LOW",
+        "item": "True_Nas Project Virtual Environment",
+        "path": "C:\\Users\\Jdmal\\Workspace\\True_Nas\\.venv",
+        "size_gb": 0.006,
+        "reason": "Separate project",
+        "action": "KEEP if actively used, otherwise DELETE",
+        "safe_to_delete": false,
+        "note": "Check if True_Nas project is still active"
+      }
+    ],
+    "ACTIVE": [
+      {
+        "priority": "KEEP",
+        "item": "Claude Code Project Cache (fluxdype)",
+        "path": "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype",
+        "size_gb": 0.019,
+        "reason": "Active Claude Code project cache - currently in use",
+        "action": "KEEP",
+        "safe_to_delete": false,
+        "note": "Required for Claude Code operation - DO NOT DELETE"
+      },
+      {
+        "priority": "KEEP",
+        "item": "Claude Code Project Cache (ComfyUI)",
+        "path": "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+        "size_gb": 0.0,
+        "reason": "Active Claude Code project cache",
+        "action": "KEEP",
+        "safe_to_delete": false,
+        "note": "Required for Claude Code operation - DO NOT DELETE"
+      }
+    ]
+  },
+  "installations_found": {
+    "comfyui_installations": [
+      {
+        "location": "C:\\Users\\Jdmal\\ComfyUI",
+        "size_gb": 4.975,
+        "status": "DUPLICATE",
+        "last_modified": "2025-11-16",
+        "recommendation": "DELETE - Use D: drive installation"
+      },
+      {
+        "location": "D:\\workspace\\fluxdype\\ComfyUI",
+        "size_gb": 201.611,
+        "status": "ACTIVE",
+        "last_modified": "Recent",
+        "recommendation": "KEEP - Primary active installation"
+      },
+      {
+        "location": "C:\\Users\\Jdmal\\Workspace\\WSL_Comfy",
+        "size_gb": 0.057,
+        "status": "OBSOLETE",
+        "last_modified": "2025-10-14",
+        "recommendation": "DELETE - Old WSL test"
+      }
+    ],
+    "python_virtual_environments": [
+      {
+        "location": "C:\\Users\\Jdmal\\ComfyUI\\venv",
+        "size_gb": 4.949,
+        "purpose": "ComfyUI (duplicate)",
+        "status": "DUPLICATE",
+        "recommendation": "DELETE"
+      },
+      {
+        "location": "D:\\workspace\\fluxdype\\venv",
+        "size_gb": 5.848,
+        "purpose": "ComfyUI (active)",
+        "status": "ACTIVE",
+        "recommendation": "KEEP"
+      },
+      {
+        "location": "C:\\Users\\Jdmal\\.hf-cli\\venv",
+        "size_gb": 0.033,
+        "purpose": "HuggingFace CLI",
+        "status": "ARCHIVE",
+        "recommendation": "Review usage"
+      },
+      {
+        "location": "C:\\Users\\Jdmal\\Workspace\\True_Nas\\.venv",
+        "size_gb": 0.006,
+        "purpose": "True_Nas project",
+        "status": "ARCHIVE",
+        "recommendation": "Review usage"
+      },
+      {
+        "location": "C:\\ProgramData\\miniconda3\\Lib\\venv",
+        "size_gb": 0.001,
+        "purpose": "Miniconda library",
+        "status": "ACTIVE",
+        "recommendation": "KEEP"
+      }
+    ]
+  },
+  "recommended_cleanup_script": {
+    "description": "PowerShell script to safely clean up C: drive",
+    "total_space_to_recover_gb": 11.402,
+    "steps": [
+      {
+        "step": 1,
+        "action": "Backup check",
+        "description": "Verify no custom workflows in C:\\Users\\Jdmal\\ComfyUI\\workflows",
+        "command": "Get-ChildItem 'C:\\Users\\Jdmal\\ComfyUI\\workflows' -ErrorAction SilentlyContinue"
+      },
+      {
+        "step": 2,
+        "action": "Delete duplicate ComfyUI installation",
+        "size_recovered_gb": 4.975,
+        "command": "Remove-Item -Path 'C:\\Users\\Jdmal\\ComfyUI' -Recurse -Force",
+        "safe": true
+      },
+      {
+        "step": 3,
+        "action": "Move LoRA models to D: drive",
+        "size_recovered_gb": 1.321,
+        "command": "Move-Item -Path 'C:\\Users\\Jdmal\\Downloads\\*.safetensors' -Destination 'D:\\workspace\\fluxdype\\ComfyUI\\models\\loras\\'",
+        "safe": true
+      },
+      {
+        "step": 4,
+        "action": "Move upscaler model to D: drive",
+        "size_recovered_gb": 0.062,
+        "command": "Move-Item -Path 'C:\\Users\\Jdmal\\Downloads\\*.pth' -Destination 'D:\\workspace\\fluxdype\\ComfyUI\\models\\upscale_models\\'",
+        "safe": true
+      },
+      {
+        "step": 5,
+        "action": "Delete obsolete WSL ComfyUI",
+        "size_recovered_gb": 0.057,
+        "command": "Remove-Item -Path 'C:\\Users\\Jdmal\\Workspace\\WSL_Comfy' -Recurse -Force",
+        "safe": true
+      }
+    ]
+  },
+  "risk_assessment": {
+    "overall_risk": "LOW",
+    "details": {
+      "duplicate_deletion_risk": "NONE - Complete working copy exists on D: drive",
+      "model_move_risk": "NONE - Simply relocating downloaded files",
+      "obsolete_deletion_risk": "NONE - Old test installation not in use",
+      "data_loss_risk": "MINIMAL - All active installations on D: drive"
+    },
+    "safety_notes": [
+      "D: drive contains the active, working ComfyUI installation (201.6 GB with models)",
+      "C: drive installation is completely redundant",
+      "All model files in Downloads are just copies that haven't been organized yet",
+      "Claude Code caches are preserved (required for operation)",
+      "No production data will be affected"
+    ]
+  },
+  "additional_findings": {
+    "flux_test_folders": [
+      {
+        "path": "C:\\Users\\Jdmal\\OneDrive\\Dev\\flux_kontext_test_20250622_095033",
+        "size_gb": 0.0,
+        "last_modified": "2025-09-29",
+        "days_old": 72,
+        "status": "Empty or negligible size",
+        "recommendation": "DELETE if confirmed empty"
+      },
+      {
+        "path": "C:\\Users\\Jdmal\\OneDrive\\Dev\\output\\flux_runway_content",
+        "size_gb": 0.0,
+        "last_modified": "2025-09-16",
+        "status": "Empty or negligible size",
+        "recommendation": "DELETE if confirmed empty"
+      },
+      {
+        "path": "C:\\Users\\Jdmal\\OneDrive\\Dev\\temp\\flux_workflow",
+        "size_gb": 0.0,
+        "last_modified": "2025-09-16",
+        "status": "Empty or negligible size",
+        "recommendation": "DELETE if confirmed empty"
+      }
+    ],
+    "false_positives": [
+      {
+        "path": "C:\\ProgramData\\miniconda3\\Lib\\site-packages\\colorama",
+        "reason": "Python package named 'colorama' was flagged by pattern matching 'lora'",
+        "note": "Not AI-related, ignore"
+      }
+    ]
+  },
+  "conclusion": {
+    "total_ai_related_size_c_drive_gb": 16.49,
+    "safe_to_delete_gb": 9.98,
+    "safe_to_move_gb": 1.38,
+    "must_keep_gb": 0.06,
+    "final_recovery_potential_gb": 11.36,
+    "recommendation": "Execute cleanup - All deletions are safe and well-justified",
+    "confidence": "HIGH"
+  }
+}

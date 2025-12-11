@@ -1,0 +1,60 @@
+# Python
+venv/
+venv_*/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# ComfyUI and Models (LARGE FILES)
+ComfyUI/
+models/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+
+# Outputs
+outputs/
+output/
+input/
+
+# Large data
+llama.cpp/
+gguf_conversion/
+
+# Archives
+*.zip
+*.tar.gz
+*.7z
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+nul
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Archived
+.archived_nodes/
+
+# Temporary
+*.log
+*.tmp
+*.bak

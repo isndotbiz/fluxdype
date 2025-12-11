@@ -1,0 +1,102 @@
+═══════════════════════════════════════════════════════════════════
+                    FLUX1 + COMFYUI QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════
+
+🌐 COMFYUI WEB INTERFACE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  URL: http://localhost:8188
+
+  Quick Actions:
+  • Load workflow → flux1_kria_optimized_workflow.json
+  • Edit prompts → Click text boxes
+  • Generate → Click "Queue Prompt"
+  • View output → Check ComfyUI/output/ folder
+
+🔧 COMMAND LINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Verify setup:
+    cd /mnt/d/workspace/fluxdype
+    bash verify_flux_setup.sh
+
+  Check server status:
+    curl http://localhost:8188/system_stats
+
+  View models:
+    ls -lh ComfyUI/models/*/
+
+📁 KEY LOCATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Base:     /mnt/d/workspace/fluxdype/
+  Models:   ComfyUI/models/
+  Output:   ComfyUI/output/
+  Workflow: ComfyUI/flux1_kria_optimized_workflow.json
+  Archive:  models_archive/ (SDXL models stored here)
+
+🎨 YOUR FLUX MODELS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Diffusion:  flux1-krea-dev_fp8_scaled.safetensors (12GB, FP8)
+  Checkpoint: flux_dev.safetensors (16GB)
+  VAE:        ae.safetensors (320MB)
+  CLIP:       clip_l.safetensors (235MB)
+  T5:         t5xxl_fp16.safetensors (9.2GB)
+
+  LoRAs (6 available):
+  • ultrafluxV1 - Quality enhancer
+  • fluxInstaGirls - Portrait style
+  • FluXXXv2 - NSFW content
+  • KREAnsfwv2 - NSFW variant
+  • facebookQuality - Quality boost
+  • NSFW_UNLOCKED - NSFW unlock
+
+⚡ RECOMMENDED SETTINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Fast (30-40s):      15-20 steps, 768x768, no LoRA
+  Balanced (60-90s):  20-25 steps, 1024x1024, 1 LoRA
+  Quality (2-3min):   30-40 steps, 1280x1280, multiple LoRAs
+
+  Always use:
+  • Sampler: euler
+  • Scheduler: simple
+  • CFG: 3.5 (Flux optimal)
+  • Model: flux1-krea-dev_fp8_scaled (fastest)
+
+💾 STORAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Active:   23GB (Flux only)
+  Archived: 80GB (SDXL - can restore anytime)
+  Saved:    80GB in working directory
+
+  To restore SDXL model:
+    mv models_archive/sdxl_checkpoints/[filename] ComfyUI/models/checkpoints/
+
+🔍 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Server not responding:
+    → Check if running: ps aux | grep main.py
+    → Restart: cd /mnt/d/workspace/fluxdype && ./start-comfy.ps1
+
+  Out of VRAM:
+    → Lower resolution (768x768)
+    → Disable LoRAs
+    → Use FP8 model (already default)
+
+  Model not found:
+    → Run: bash verify_flux_setup.sh
+    → Check: ls ComfyUI/models/diffusion_models/
+
+  Slow generation:
+    → Ensure using FP8 model (not FP16)
+    → Lower steps or resolution
+    → Check GPU usage in ComfyUI
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SETUP_SUMMARY.md                - Quick summary (start here)
+  FLUX_SETUP_COMPLETE.md          - Full guide with examples
+  MODEL_COMPATIBILITY_REPORT.md   - Model analysis
+  QUICK_REFERENCE.txt             - This file
+
+═══════════════════════════════════════════════════════════════════
+                    🚀 START CREATING NOW! 🚀
+                  http://localhost:8188
+═══════════════════════════════════════════════════════════════════

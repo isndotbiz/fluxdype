@@ -1,0 +1,194 @@
+================================================================================
+                    BACKGROUND REMOVAL WORKFLOW - QUICK START
+================================================================================
+
+WORKFLOW FILE: D:\workspace\fluxdype\workflows\remove_background.json
+DOCUMENTATION: D:\workspace\fluxdype\workflows\README_remove_background.md
+
+================================================================================
+INSTANT START (3 STEPS)
+================================================================================
+
+1. COPY YOUR IMAGE to the input folder:
+   D:\workspace\fluxdype\ComfyUI\input\your_image.jpg
+
+2. START ComfyUI SERVER:
+   cd D:\workspace\fluxdype
+   .\start-comfy.ps1
+
+3. RUN THE WORKFLOW:
+   cd D:\workspace\fluxdype
+   .\run-workflow.ps1 -WorkflowPath ".\workflows\remove_background.json" -Wait
+
+OUTPUT GOES TO:
+   D:\workspace\fluxdype\ComfyUI\output\
+
+FILES CREATED:
+   - transparent_bg_*.png (IMAGE WITH TRANSPARENT BACKGROUND)
+   - bg_removal_mask_*.png (MASK VISUALIZATION)
+
+================================================================================
+EDITING THE WORKFLOW
+================================================================================
+
+To change input image, edit: D:\workspace\fluxdype\workflows\remove_background.json
+
+Find this line:
+  "image": "input_image.png"
+
+Change to your actual filename:
+  "image": "my_product_photo.jpg"
+
+================================================================================
+MODEL SELECTION (CHANGE IN WORKFLOW)
+================================================================================
+
+Fast:          "model": "BiRefNet_512x512"
+Balanced:      "model": "BiRefNet-general"          [DEFAULT - RECOMMENDED]
+High Quality:  "model": "BiRefNet-HR"
+Portraits:     "model": "BiRefNet-portrait"
+Lightweight:   "model": "BiRefNet_lite"
+
+Change in Node 2:
+  "model": "BiRefNet-general",
+
+================================================================================
+PARAMETER TWEAKS
+================================================================================
+
+SMOOTH EDGES (for UI/Product images):
+  "mask_blur": 3,
+
+SHARP EDGES (for precision):
+  "mask_blur": 0,
+
+REMOVE FUZZY EDGES (shrink mask):
+  "mask_offset": -2,
+
+INCLUDE MORE FOREGROUND (expand mask):
+  "mask_offset": 2,
+
+BETTER EDGE QUALITY (for complex objects):
+  "refine_foreground": true,         [Already enabled]
+
+================================================================================
+FULL PARAMETER OPTIONS
+================================================================================
+
+Node 2 - BiRefNetRMBG:
+  • model: [See model list above]
+  • mask_blur: 0-64 (higher = smoother edges)
+  • mask_offset: -20 to +20 (negative = shrink, positive = expand)
+  • refine_foreground: true/false
+  • background: "Alpha"              [Keep this for transparent PNG]
+  • background_color: "#000000"      [Ignored when background="Alpha"]
+
+Node 3 - SaveImage:
+  • filename_prefix: "transparent_bg" (name of output file)
+  • format: "png"                    [Keep for PNG with alpha]
+  • quality: 95                      [Lossless PNG quality]
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Output is not transparent
+FIX: Make sure Node 2 has: "background": "Alpha"
+
+PROBLEM: Edges look jagged
+FIX: Increase mask_blur to 3-4
+
+PROBLEM: Missing parts of foreground
+FIX: Use positive mask_offset (2-3) OR try BiRefNet-portrait
+
+PROBLEM: Too slow
+FIX: Use BiRefNet_512x512 model OR reduce image size
+
+PROBLEM: Out of memory
+FIX: Use BiRefNet_lite model OR add --lowvram flag to start-comfy.ps1
+
+================================================================================
+AVAILABLE BIREFNET MODELS (ALL OPTIONS)
+================================================================================
+
+BiRefNet-general         General purpose (balanced)
+BiRefNet-portrait        Optimized for faces/people
+BiRefNet-matting         General matting tasks
+BiRefNet-HR              High resolution (2560px max)
+BiRefNet-HR-matting      High-res matting
+BiRefNet_lite            Lightweight (faster)
+BiRefNet_lite-matting    Lightweight matting
+BiRefNet_512x512         Speed optimized (512px limit)
+BiRefNet_dynamic         Dynamic resolution
+BiRefNet_toonout         Cartoon/outline extraction
+
+================================================================================
+PERFORMANCE (RTX 3090)
+================================================================================
+
+512x512:   0.5-1 second
+1024x1024: 2-3 seconds
+2048x2048: 8-10 seconds
+2560x2560: 12-15 seconds
+
+================================================================================
+API COMMANDS
+================================================================================
+
+Using PowerShell:
+  .\run-workflow.ps1 -WorkflowPath ".\workflows\remove_background.json" -Wait
+
+Using cURL:
+  curl -X POST http://localhost:8188/prompt ^
+    -H "Content-Type: application/json" ^
+    -d @workflows/remove_background.json
+
+Using Python:
+  python -c "import json, requests; w=json.load(open('workflows/remove_background.json')); requests.post('http://localhost:8188/prompt', json=w['prompt'])"
+
+================================================================================
+OUTPUT FORMAT
+================================================================================
+
+PNG WITH ALPHA CHANNEL:
+  • Format: PNG (lossless)
+  • Color Space: RGBA (RGB + Transparency)
+  • Alpha: 8-bit (0-255), where 255 = fully opaque, 0 = fully transparent
+  • Size: Same as input image
+  • Quality: No compression loss
+
+MASK IMAGE (grayscale):
+  • White (255): Foreground (keep)
+  • Black (0): Background (remove)
+  • Gray (1-254): Transition/blended areas
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+D:\workspace\fluxdype\
+├── workflows\
+│   ├── remove_background.json              [YOUR WORKFLOW]
+│   └── README_remove_background.md         [FULL DOCUMENTATION]
+├── ComfyUI\
+│   ├── input\                              [PUT IMAGES HERE]
+│   ├── output\                             [RESULTS GO HERE]
+│   ├── custom_nodes\
+│   │   └── ComfyUI-RMBG\                   [Background removal node]
+│   └── main.py
+├── start-comfy.ps1                         [Start server]
+└── run-workflow.ps1                        [Submit workflows]
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Place image in: D:\workspace\fluxdype\ComfyUI\input\
+2. Start server: .\start-comfy.ps1
+3. Run workflow: .\run-workflow.ps1 -WorkflowPath ".\workflows\remove_background.json" -Wait
+4. Get results from: D:\workspace\fluxdype\ComfyUI\output\
+
+For detailed options and advanced usage, see:
+  D:\workspace\fluxdype\workflows\README_remove_background.md
+
+================================================================================

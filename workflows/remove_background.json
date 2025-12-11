@@ -1,0 +1,111 @@
+{
+  "workflow_info": {
+    "name": "Background Removal with BiRefNet",
+    "description": "Remove background from images using BiRefNet (RMBG) for transparent PNG output with alpha channel. Perfect for UI/UX work, product images, and portrait extraction.",
+    "version": "1.0",
+    "use_case": "ui_ux_work",
+    "quality_level": "high",
+    "output_format": "png_transparent"
+  },
+  "prompt": {
+    "1": {
+      "inputs": {
+        "image": "input_image.png"
+      },
+      "class_type": "LoadImage",
+      "_meta": {
+        "title": "Load Input Image",
+        "description": "Load the image you want to remove background from. Supports PNG, JPG, WebP, etc."
+      }
+    },
+    "2": {
+      "inputs": {
+        "image": ["1", 0],
+        "model": "BiRefNet-general",
+        "mask_blur": 2,
+        "mask_offset": 0,
+        "invert_output": false,
+        "refine_foreground": true,
+        "background": "Alpha",
+        "background_color": "#000000"
+      },
+      "class_type": "BiRefNetRMBG",
+      "_meta": {
+        "title": "BiRefNet Background Removal",
+        "description": "Apply BiRefNet model for precise background removal. Uses general-purpose model optimized for balanced performance across various image types.",
+        "model_info": {
+          "BiRefNet-general": "General purpose model with balanced performance (default, recommended)",
+          "BiRefNet-portrait": "Optimized for portrait/human matting",
+          "BiRefNet-matting": "General purpose matting model",
+          "BiRefNet-HR": "High resolution (2048px+)",
+          "BiRefNet_lite": "Lightweight/faster processing",
+          "BiRefNet_512x512": "Optimized for 512x512 (fastest)"
+        }
+      }
+    },
+    "3": {
+      "inputs": {
+        "images": ["2", 0],
+        "filename_prefix": "transparent_bg",
+        "format": "png",
+        "quality": 95,
+        "lossless_webp": false,
+        "method": -1
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Transparent PNG",
+        "description": "Save output image as PNG with alpha channel for transparent background. Images are saved to ComfyUI/output directory."
+      }
+    },
+    "4": {
+      "inputs": {
+        "images": ["2", 2],
+        "filename_prefix": "bg_removal_mask",
+        "format": "png",
+        "quality": 95,
+        "lossless_webp": false,
+        "method": -1
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Mask Visualization",
+        "description": "Optional: Save the mask as image for verification/debugging. Shows foreground as white, background as black."
+      }
+    },
+    "5": {
+      "inputs": {
+        "images": ["2", 1]
+      },
+      "class_type": "PreviewImage",
+      "_meta": {
+        "title": "Preview Mask",
+        "description": "Preview the mask output in ComfyUI UI"
+      }
+    }
+  },
+  "workflow_notes": {
+    "usage": "Replace 'input_image.png' in node 1 with your actual image filename. The image should be in ComfyUI/input directory.",
+    "output_location": "D:\\workspace\\fluxdype\\ComfyUI\\output\\",
+    "model_selection": {
+      "for_speed": "Use BiRefNet_512x512 (fastest, 512px limit)",
+      "for_quality": "Use BiRefNet-general (default, balanced)",
+      "for_high_res": "Use BiRefNet-HR (handles 2048px+)",
+      "for_portraits": "Use BiRefNet-portrait (optimized for people)"
+    },
+    "parameters_explanation": {
+      "mask_blur": "Blur applied to mask edges (0=no blur, higher=smoother edges, max 64)",
+      "mask_offset": "Expand (+) or shrink (-) the mask boundary (range -20 to +20)",
+      "refine_foreground": "Enable Fast Foreground Color Estimation for better transparency",
+      "background": "Alpha = transparent (recommended), Color = solid background"
+    },
+    "tips": [
+      "Set 'refine_foreground' to true for better edge quality on complex objects",
+      "Use mask_blur 2-4 for smoother edges on UI/product images",
+      "For portraits, switch model to 'BiRefNet-portrait' for better results",
+      "Output PNG includes full alpha channel for transparency",
+      "Mask visualization saved separately can be used for further processing"
+    ],
+    "api_submission": "Use run-workflow.ps1 script: .\\run-workflow.ps1 -WorkflowPath '.\\workflows\\remove_background.json'"
+  }
+}

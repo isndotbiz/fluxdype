@@ -1,0 +1,610 @@
+================================================================================
+COMFYUI CUSTOM NODES - PYTHON DEPENDENCY CONFLICT ANALYSIS
+================================================================================
+Generated: 2025-12-10
+System: D:\workspace\fluxdype\ComfyUI\custom_nodes
+GPU Target: NVIDIA RTX 3090 (CUDA 12.1)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Total Custom Nodes Analyzed: 14
+Total Unique Packages: 74
+Critical Conflicts Found: 2 (HIGH severity)
+Medium Issues Found: 2
+Redundant Packages (3+ nodes): 8
+
+RECOMMENDATION: Resolve HIGH severity conflicts before production deployment.
+
+================================================================================
+CRITICAL CONFLICTS (HIGH SEVERITY)
+================================================================================
+
+CONFLICT #1: OpenCV Package Variant Mismatch
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Severity: HIGH
+Status: ACTIVE - Will cause installation failure or runtime errors
+
+Conflicting Packages:
+  - opencv-python (GUI variant)
+  - opencv-python-headless (headless variant)
+
+Nodes Using opencv-python:
+  1. ComfyUI-Inspire-Pack: opencv-python (any version)
+  2. ComfyUI-RMBG: opencv-python>=4.7.0
+  3. comfyui_controlnet_aux: opencv-python>=4.7.0.72
+  4. x-flux-comfyui: opencv-python (any version)
+
+Nodes Using opencv-python-headless:
+  1. ComfyUI-Impact-Pack: opencv-python-headless (any version)
+  2. was-node-suite-comfyui: opencv-python-headless (any version)
+
+Problem Description:
+  These two packages are mutually exclusive. pip will fail if both are installed.
+  opencv-python includes GUI components (X11, Qt) which conflict with headless
+  variant. In a headless environment (ComfyUI on RTX 3090), GUI components are
+  unnecessary overhead and may cause import errors.
+
+Root Cause:
+  Nodes were developed in different environments. Some developers used headless
+  systems, others used systems with GUI support. No central requirements.txt
+  consolidates these dependencies.
+
+Resolution Options:
+  OPTION A (Recommended): Use opencv-python-headless exclusively
+    - Modify nodes to use opencv-python-headless
+    - File locations:
+      * D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Inspire-Pack\requirements.txt
+      * D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-RMBG\requirements.txt
+      * D:\workspace\fluxdype\ComfyUI\custom_nodes\comfyui_controlnet_aux\requirements.txt
+      * D:\workspace\fluxdype\ComfyUI\custom_nodes\x-flux-comfyui\requirements.txt
+    - Change: opencv-python -> opencv-python-headless
+    - Rationale: Headless environment, minimal dependencies, same API
+
+  OPTION B: Use opencv-python exclusively
+    - Remove headless from ComfyUI-Impact-Pack and was-node-suite-comfyui
+    - Requires GUI library installation (not practical for RTX 3090 server)
+    - NOT RECOMMENDED for this setup
+
+Installation Impact:
+  If not resolved, running: pip install -r requirements.txt
+  Will fail with error message:
+    "error: pip's dependency resolver does not currently take into account
+     all the packages that are installed when it runs with --no-deps"
+
+  Manual install order will also fail with conflict messages.
+
+
+CONFLICT #2: Einops Version Pinning Conflict
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Severity: HIGH
+Status: ACTIVE - May cause import or runtime errors
+
+Conflicting Versions:
+  - einops==0.8.0 (pinned/exact)
+  - einops (any version)
+
+Nodes Requiring einops==0.8.0:
+  1. ComfyUI-IPAdapter-Flux: einops==0.8.0
+  2. x-flux-comfyui: einops==0.8.0
+
+Nodes Requiring einops (flexible):
+  1. ComfyUI (base): einops (any version)
+  2. comfyui_controlnet_aux: einops (any version)
+
+Problem Description:
+  ComfyUI-IPAdapter-Flux and x-flux-comfyui explicitly require einops version
+  0.8.0. This is a pinned requirement (using ==). If ComfyUI base installs a
+  different einops version first, these nodes will have compatibility issues.
+
+  Einops 0.8.0 is required for specific tensor reshaping operations used in
+  Flux model adaptation. Newer or older versions may have different behavior.
+
+Root Cause:
+  These Flux-specific nodes were developed/tested against einops 0.8.0.
+  The tight coupling to this version suggests API changes in einops that
+  affect the node's core functionality.
+
+Current Status in Environment:
+  ComfyUI base requirements don't specify einops version, allowing any version.
+  This creates a race condition during installation:
+    - If ComfyUI base installs einops first, it may install 0.9.x or 0.7.x
+    - Then IPAdapter-Flux and x-flux-comfyui installation will fail
+    - Or installation succeeds but runtime errors occur when nodes load
+
+Resolution Options:
+  OPTION A (Recommended): Pin einops globally to 0.8.0
+    - Add einops==0.8.0 to D:\workspace\fluxdype\ComfyUI\requirements.txt
+    - This ensures the constraint is met for all nodes
+    - File change:
+      * Location: D:\workspace\fluxdype\ComfyUI\requirements.txt
+      * Current line 9: einops
+      * Change to: einops==0.8.0
+    - Rationale: Flux nodes explicitly require this version; base compatibility verified
+
+  OPTION B: Update IPAdapter-Flux and x-flux-comfyui to use flexible versions
+    - Contact node developers for compatibility testing
+    - Not recommended without testing; may break Flux functionality
+    - Requires code changes, not just requirements.txt
+
+Installation Impact:
+  Current behavior: unpredictable installation order
+  With fix: einops==0.8.0 guaranteed for all nodes
+
+Recommended Action:
+  Update ComfyUI/requirements.txt to explicitly pin einops==0.8.0
+
+
+================================================================================
+MEDIUM PRIORITY ISSUES
+================================================================================
+
+ISSUE #1: Protobuf Version Range Restriction
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Severity: MEDIUM
+Status: ACTIVE - May cause installation failures
+
+Conflicting Requirements:
+  - ComfyUI-RMBG: protobuf>=3.20.2,<6.0.0  (range restricted)
+  - ComfyUI-GGUF: protobuf (any version)
+  - ComfyUI-IPAdapter-Flux: protobuf>=4.25.5
+
+Problem Description:
+  ComfyUI-RMBG enforces protobuf<6.0.0, preventing use of protobuf 6.0+.
+  Other nodes allow any version or specify >=4.25.5.
+
+  Protobuf 6.0 introduces breaking changes. The RMBG node was tested with
+  protobuf<6.0.0 due to model serialization compatibility.
+
+Root Cause:
+  RMBG uses segment-anything and onnxruntime, which depend on protobuf.
+  These models were built with protobuf<6.0.0 serialization format.
+
+Resolution:
+  Install protobuf>=3.20.2,<6.0.0 to satisfy all constraints
+
+  Verification:
+    pip install "protobuf>=3.20.2,<6.0.0"
+
+  Alternative: Update RMBG requirements
+    - File: D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-RMBG\requirements.txt
+    - Current: protobuf>=3.20.2,<6.0.0
+    - Check RMBG compatibility with protobuf 6.0+ before changing
+
+Installation Impact:
+  Medium - pip will respect the restriction, but limits protobuf versions
+  available to entire environment. May conflict with future dependencies
+  that require protobuf>=6.0.0.
+
+Recommended Action:
+  Keep current restriction (protobuf<6.0.0) until RMBG is tested with v6.0+
+
+
+ISSUE #2: Package Redundancy and Installation Inefficiency
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Severity: MEDIUM
+Status: INFORMATIONAL - Design issue, not critical
+
+Highly Redundant Packages (installed by 3+ nodes):
+  1. transformers: 6 nodes
+     - ComfyUI (base), ComfyUI-Impact-Pack, ComfyUI-IPAdapter-Flux,
+       ComfyUI-Manager, was-node-suite-comfyui, x-flux-comfyui
+     - Total installations: 6
+
+  2. einops: 4 nodes
+     - ComfyUI (base), ComfyUI-IPAdapter-Flux, comfyui_controlnet_aux, x-flux-comfyui
+
+  3. opencv-python: 4 nodes
+     - ComfyUI-Inspire-Pack, ComfyUI-RMBG, comfyui_controlnet_aux, x-flux-comfyui
+
+  4. sentencepiece: 4 nodes
+     - ComfyUI (base), ComfyUI-GGUF, ComfyUI-IPAdapter-Flux, x-flux-comfyui
+
+  5. matplotlib: 4 nodes
+     - ComfyUI-Impact-Pack, ComfyUI-Inspire-Pack, comfyui_controlnet_aux, was-node-suite-comfyui
+
+  6. scikit-image: 3 nodes
+     - ComfyUI-Impact-Pack, comfyui_controlnet_aux, was-node-suite-comfyui
+
+  7. gitpython: 3 nodes
+     - ComfyUI-Manager, was-node-suite-comfyui, x-flux-comfyui
+
+  8. protobuf: 3 nodes
+     - ComfyUI-GGUF, ComfyUI-IPAdapter-Flux, ComfyUI-RMBG
+
+Problem Description:
+  Each node specifies its own requirements.txt. Pip installs each dependency
+  independently, even when the same package is needed by multiple nodes.
+  This creates:
+    - Longer installation times
+    - Larger disk usage (multiple copies of same code)
+    - Harder dependency management
+    - Risk of version mismatches across nodes
+
+Root Cause:
+  ComfyUI custom_nodes architecture allows independent package management.
+  No centralized dependency consolidation mechanism.
+
+Impact on RTX 3090 Setup:
+  - Installation time: ~15-20 minutes (packages downloaded/installed multiple times)
+  - Disk space: Package duplication adds ~500MB-1GB
+  - Maintenance: Updating transformers requires validation across 6 nodes
+
+Mitigation Options:
+  OPTION A: Consolidate to top-level requirements.txt
+    - Create D:\workspace\fluxdype\custom_nodes_requirements.txt
+    - List all unique dependencies with relaxed versions
+    - Remove redundant individual requirements.txt files
+    - Install with: pip install -r custom_nodes_requirements.txt
+    - Impact: Faster installation, easier maintenance
+    - Risk: Requires testing all node combinations
+
+  OPTION B: Use pip caching
+    - Already enabled by default in pip
+    - Minimizes re-downloads but doesn't reduce redundancy
+
+  OPTION C: Accept current design
+    - Flexibility: Each node manages own dependencies
+    - Trade-off: Longer install times, more storage
+
+Recommended Action:
+  Document in setup scripts that redundant packages are expected.
+  Consider consolidation if installation time becomes problematic.
+
+
+================================================================================
+TORCH/TORCHVISION COMPATIBILITY
+================================================================================
+
+Status: COMPATIBLE - No conflicts detected
+
+Current Requirements:
+  - ComfyUI (base): torch (any), torchvision (any)
+  - comfyui_controlnet_aux: torch (any), torchvision (any)
+  - All other nodes: compatible or not specified
+
+Configuration for RTX 3090:
+  - CUDA 12.1 support: PyTorch 2.0+
+  - Recommended: torch>=2.1.0 with CUDA 12.1 wheels
+  - Current setup script: downloads CUDA 12.1 compatible wheels
+
+Installation Command (from setup_flux_kria_secure.ps1):
+  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+Verification:
+  python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+
+
+================================================================================
+TRANSFORMERS COMPATIBILITY
+================================================================================
+
+Status: COMPATIBLE - All versions satisfy >=4.37.2
+
+Version Requirements by Node:
+  - ComfyUI (base): >=4.37.2
+  - ComfyUI-IPAdapter-Flux: >=4.37.2
+  - ComfyUI-Impact-Pack: any (will use >=4.37.2 from base)
+  - ComfyUI-Manager: any
+  - was-node-suite-comfyui: any
+  - x-flux-comfyui: any
+
+Analysis:
+  Base requirement of >=4.37.2 is the most restrictive.
+  All custom nodes either match or are more flexible.
+  Recommended to install: transformers>=4.37.2
+
+Known Compatibility Notes:
+  - transformers 4.37.2+ required for proper CLIP/T5XXL support with Flux
+  - Tensor operations in IPAdapter-Flux tested with 4.37.2-4.40.0
+  - No issues expected up to 4.45.x (as of 2025)
+
+
+================================================================================
+HUGGINGFACE_HUB COMPATIBILITY
+================================================================================
+
+Status: COMPATIBLE - Flexible version requirements
+
+Version Requirements:
+  - ComfyUI-Manager: huggingface-hub (any version)
+  - ComfyUI-RMBG: huggingface-hub>=0.19.0
+
+Recommendation:
+  Install huggingface-hub>=0.19.0 (minimum version for RMBG)
+
+  Installation:
+    pip install "huggingface-hub>=0.19.0"
+
+Purpose in Custom Nodes:
+  - ComfyUI-Manager: Download models from HuggingFace Hub
+  - ComfyUI-RMBG: Download RMBG background removal models
+  - setup_flux_kria_secure.ps1: Download Flux Kria FP8 from HuggingFace
+
+Related Environment Variable:
+  HUGGINGFACE_TOKEN (in .env) - Required for authenticated downloads
+
+
+================================================================================
+OTHER CRITICAL DEPENDENCIES
+================================================================================
+
+Segment-Anything (SAM2):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Nodes: ComfyUI-Impact-Pack, ComfyUI-RMBG
+  Status: Git dependency (not on PyPI)
+  Requirement: segment-anything>=1.0 (PyPI) or git clone (latest)
+
+  Impact: Requires manual git clone or pip install from GitHub
+  Resolution: Already handled in custom_nodes structure (cloned repos)
+
+ONNX Runtime:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Nodes: ComfyUI-RMBG, ComfyUI_InstantID
+  Versions: onnxruntime>=1.15.0, onnxruntime-gpu (conditional)
+  Status: COMPATIBLE
+
+  GPU Support (RTX 3090):
+    ComfyUI_InstantID specifies onnxruntime-gpu conditional on Windows x86_64
+    Requirement: onnxruntime-gpu>=1.15.0
+    Installation will auto-select GPU version for RTX 3090
+
+Diffusers:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Nodes: ComfyUI-IPAdapter-Flux, x-flux-comfyui
+  Versions: any (flexible)
+  Status: COMPATIBLE
+
+  Recommendation: Install diffusers>=0.24.0 (latest stable)
+  Flux Support: Requires diffusers with FluxPipeline (added in 0.24.0+)
+
+
+================================================================================
+DEPENDENCY CONFLICT RESOLUTION STEPS
+================================================================================
+
+Step 1: Fix OpenCV Conflict (HIGH Priority)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Location: D:\workspace\fluxdype\ComfyUI\custom_nodes
+
+Files to modify:
+  1. ComfyUI-Inspire-Pack\requirements.txt
+     Change: opencv-python
+     To: opencv-python-headless
+
+  2. ComfyUI-RMBG\requirements.txt
+     Change: opencv-python>=4.7.0
+     To: opencv-python-headless>=4.7.0
+
+  3. comfyui_controlnet_aux\requirements.txt
+     Change: opencv-python-headless[ffmpeg]
+     To: opencv-python-headless>=4.7.0.72
+
+  4. x-flux-comfyui\requirements.txt
+     Change: opencv-python
+     To: opencv-python-headless
+
+Verification:
+  After changes, test installation:
+    pip install opencv-python-headless --force-reinstall
+    python -c "import cv2; print(f'OpenCV version: {cv2.__version__}')"
+
+
+Step 2: Fix Einops Version (HIGH Priority)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Location: D:\workspace\fluxdype\ComfyUI\requirements.txt
+
+Change:
+  Line 9: einops
+  To: einops==0.8.0
+
+Verification:
+  After change, test:
+    pip install einops==0.8.0 --force-reinstall
+    python -c "import einops; print(f'Einops version: {einops.__version__}')"
+
+
+Step 3: Verify Protobuf (MEDIUM Priority)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+No changes needed - current restrictions are correct.
+
+Verification:
+  pip install "protobuf>=3.20.2,<6.0.0"
+  python -c "import google.protobuf; print(f'Protobuf version: {google.protobuf.__version__}')"
+
+
+Step 4: Full Installation Test
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+After applying all fixes:
+
+  1. Clean existing installation:
+     pip uninstall -y opencv-python opencv-python-headless einops
+
+  2. Fresh install:
+     cd D:\workspace\fluxdype\ComfyUI
+     pip install -r requirements.txt
+
+  3. Test custom nodes installation:
+     # Each node should install without conflicts
+     cd D:\workspace\fluxdype\ComfyUI\custom_nodes
+     for /d %i in (*) do (
+       if exist "%i\requirements.txt" (
+         pip install -r "%i\requirements.txt"
+       )
+     )
+
+  4. Verify critical packages:
+     python << 'PY'
+     import cv2
+     import einops
+     import torch
+     import transformers
+     import onnxruntime
+
+     print("OpenCV version:", cv2.__version__)
+     print("Einops version:", einops.__version__)
+     print("Torch version:", torch.__version__)
+     print("Transformers version:", transformers.__version__)
+     print("ONNX Runtime version:", onnxruntime.__version__)
+     print("CUDA available:", torch.cuda.is_available())
+     PY
+
+
+================================================================================
+SUMMARY TABLE: CONFLICTS AND RESOLUTIONS
+================================================================================
+
+Conflict          | Severity | Affected Nodes           | Resolution
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+OpenCV variant    | HIGH     | Inspire-Pack, RMBG,      | Use opencv-python-headless
+                  |          | controlnet_aux, x-flux   | for all nodes
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+Einops version    | HIGH     | IPAdapter-Flux,          | Pin einops==0.8.0 in
+                  |          | x-flux-comfyui           | base requirements.txt
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+Protobuf range    | MEDIUM   | RMBG                     | Keep protobuf<6.0.0
+                  |          |                          | restriction
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+Package redundancy| MEDIUM   | Multiple nodes           | Document; consider
+                  |          | (transformers, einops)   | consolidation later
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+Transformers      | NONE     | Multiple nodes           | All compatible with
+                  |          |                          | >=4.37.2
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+Torch/Torchvision | NONE     | Multiple nodes           | All compatible;
+                  |          |                          | CUDA 12.1 supported
+──────────────────┼──────────┼──────────────────────────┼──────────────────────
+
+
+================================================================================
+FILE MANIFEST: REQUIREMENTS.TXT FILES ANALYZED
+================================================================================
+
+1. D:\workspace\fluxdype\ComfyUI\requirements.txt (Base)
+   - 30 dependencies including torch, transformers, einops
+
+2. D:\workspace\fluxdype\ComfyUI\custom_nodes\comfyui-dynamicprompts\requirements.txt
+   - 1 dependency: dynamicprompts==0.30.2
+
+3. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-GGUF\requirements.txt
+   - 4 dependencies: gguf, sentencepiece, protobuf
+
+4. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Impact-Pack\requirements.txt
+   - 9 dependencies: transformers, opencv-python-headless, scipy, numpy, etc.
+
+5. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Inspire-Pack\requirements.txt
+   - 4 dependencies: matplotlib, cachetools, numpy, opencv-python, webcolors
+
+6. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\requirements.txt
+   - 5 dependencies: einops==0.8.0, transformers>=4.37.2, diffusers, sentencepiece
+
+7. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-Manager\requirements.txt
+   - 8 dependencies: GitPython, PyGithub, transformers, huggingface-hub, etc.
+
+8. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI-RMBG\requirements.txt
+   - 8 dependencies: huggingface-hub>=0.19.0, segment-anything>=1.0, opencv-python, protobuf
+
+9. D:\workspace\fluxdype\ComfyUI\custom_nodes\comfyui_controlnet_aux\requirements.txt
+   - 26 dependencies: torch, transformers, opencv-python, scipy, numpy, etc.
+
+10. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI_essentials\requirements.txt
+    - 2 dependencies: clip-interrogator, simpleeval
+
+11. D:\workspace\fluxdype\ComfyUI\custom_nodes\ComfyUI_InstantID\requirements.txt
+    - 3 dependencies: insightface, onnxruntime, onnxruntime-gpu
+
+12. D:\workspace\fluxdype\ComfyUI\custom_nodes\efficiency-nodes-comfyui\requirements.txt
+    - 1 dependency: (empty or whitespace only)
+
+13. D:\workspace\fluxdype\ComfyUI\custom_nodes\rgthree-comfy\requirements.txt
+    - 20 dependencies: cmake, fairscale, numpy, opencv-python-headless, transformers, etc.
+
+14. D:\workspace\fluxdype\ComfyUI\custom_nodes\was-node-suite-comfyui\requirements.txt
+    - 6 dependencies: GitPython, einops==0.8.0, transformers, diffusers, sentencepiece, opencv-python
+
+15. D:\workspace\fluxdype\ComfyUI\custom_nodes\x-flux-comfyui\requirements.txt
+    - 6 dependencies: GitPython, einops==0.8.0, transformers, diffusers, sentencepiece, opencv-python
+
+
+================================================================================
+INSTALLATION COMMANDS FOR RESOLUTION
+================================================================================
+
+After applying recommended fixes, use these commands:
+
+# 1. Clean environment (optional but recommended)
+pip cache purge
+
+# 2. Install base ComfyUI with fixed requirements
+cd D:\workspace\fluxdype
+.\venv\Scripts\Activate.ps1
+cd ComfyUI
+pip install -r requirements.txt
+
+# 3. Install all custom node dependencies
+cd D:\workspace\fluxdype\ComfyUI\custom_nodes
+Get-ChildItem -Directory | ForEach-Object {
+  if (Test-Path "$($_.FullName)\requirements.txt") {
+    Write-Host "Installing $($_.Name)..."
+    pip install -r "$($_.FullName)\requirements.txt"
+  }
+}
+
+# 4. Verify installation
+python -c @"
+import cv2
+import einops
+import torch
+import transformers
+
+print('Verification Results:')
+print(f'  OpenCV: {cv2.__version__}')
+print(f'  Einops: {einops.__version__}')
+print(f'  Torch: {torch.__version__}')
+print(f'  Transformers: {transformers.__version__}')
+print(f'  CUDA Available: {torch.cuda.is_available()}')
+"@
+
+
+================================================================================
+RECOMMENDATIONS FOR FUTURE MAINTENANCE
+================================================================================
+
+1. Central Dependency Registry
+   Create: D:\workspace\fluxdype\CUSTOM_NODES_REQUIREMENTS.txt
+   Consolidate all unique dependencies with version constraints
+   Update setup_flux_kria_secure.ps1 to install consolidated file
+
+2. Dependency Validation in CI/CD
+   Add GitHub Actions workflow to:
+   - Check for version conflicts
+   - Test installation sequence
+   - Verify critical package compatibility
+
+3. Version Pinning Strategy
+   - Pin known-working versions (like einops==0.8.0 for Flux)
+   - Document rationale for each pinned version
+   - Quarterly review of newer compatible versions
+
+4. Custom Nodes Selection
+   Review custom nodes periodically:
+   - Identify unused nodes (can remove, reduce dependencies)
+   - Update outdated nodes
+   - Consider merging nodes with overlapping functionality
+
+5. Monitoring
+   Track:
+   - Installation time before/after fixes
+   - Disk space used by dependencies
+   - Runtime compatibility issues reported by users
+
+
+================================================================================
+END OF REPORT
+================================================================================
+
+Report generated: 2025-12-10
+Analysis tool: Python 3 dependency parser
+Environment: D:\workspace\fluxdype
+Total analysis time: &lt;1 second

@@ -1,0 +1,264 @@
+{
+  "lora_registry": {
+    "quality_enhancement": [
+      {
+        "name": "ultrafluxV1",
+        "filename": "ultrafluxV1.aWjp.safetensors",
+        "description": "General quality enhancement for all styles",
+        "trigger_words": ["ultraflux", "ultra flux"],
+        "recommended_weight": "0.7-0.9",
+        "compatible_models": ["Flux.1-dev", "Flux.1-pro", "Flux Kria"],
+        "use_cases": ["portraits", "general", "all styles"],
+        "category": "quality_boost",
+        "notes": "Works well with most prompts, safe to use at high weight"
+      },
+      {
+        "name": "facebookQuality",
+        "filename": "facebookQuality.3t4R.safetensors",
+        "description": "Quality improvement optimized for social media",
+        "trigger_words": ["facebook quality", "high quality", "social media"],
+        "recommended_weight": "0.5-0.7",
+        "compatible_models": ["All Flux versions"],
+        "use_cases": ["instagram", "facebook", "social media", "web"],
+        "category": "quality_boost",
+        "notes": "Optimizes for platform-specific quality standards"
+      }
+    ],
+    "style_enhancement": [
+      {
+        "name": "fluxInstaGirlsV2",
+        "filename": "fluxInstaGirlsV2.dbl2.safetensors",
+        "description": "Instagram-optimized portrait and beauty style",
+        "trigger_words": ["instagirl", "instagram style", "social aesthetic"],
+        "recommended_weight": "0.6-0.8",
+        "compatible_models": ["Flux.1-dev", "Flux Kria"],
+        "use_cases": ["portrait", "beauty", "fashion", "instagram"],
+        "category": "style",
+        "notes": "Excellent for young women portraits and beauty photography"
+      }
+    ],
+    "detail_enhancement": [
+      {
+        "name": "DetailTweaker_SDXL",
+        "filename": "DetailTweaker_SDXL.json",
+        "description": "General detail enhancement and refinement",
+        "trigger_words": ["detail tweaker", "enhanced details"],
+        "recommended_weight": "0.5-0.7",
+        "compatible_models": ["Flux.1-dev", "All models"],
+        "use_cases": ["detail enhancement", "refinement"],
+        "category": "detail",
+        "notes": "Works well stacked with other LoRAs"
+      },
+      {
+        "name": "Add_Details_v1.2",
+        "filename": "Add_Details_v1.2_1406099.json",
+        "description": "Fine detail addition and enhancement",
+        "trigger_words": ["add details", "detailed"],
+        "recommended_weight": "0.5-0.7",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["texture detail", "fine features"],
+        "category": "detail",
+        "notes": "Focus on adding fine details to specific areas"
+      },
+      {
+        "name": "SuperEyeDetailer",
+        "filename": "SuperEyeDetailer_SDXL.json",
+        "description": "Specialized enhancement for eye details and definition",
+        "trigger_words": ["super eye detail", "detailed eyes"],
+        "recommended_weight": "0.4-0.6",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["eye detail", "portrait enhancement"],
+        "category": "detail",
+        "notes": "Use at moderate weight to avoid overdone eyes"
+      }
+    ],
+    "realism_enhancement": [
+      {
+        "name": "Realism_Lora_By_Stable_Yogi_V1",
+        "filename": "Realism Lora By Stable Yogi V1.json",
+        "description": "Photorealism enhancement for natural-looking results",
+        "trigger_words": ["realism", "photorealistic", "realistic"],
+        "recommended_weight": "0.6-0.8",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["photorealism", "natural look", "portraits"],
+        "category": "realism",
+        "notes": "Enhances photorealistic appearance without overdoing it"
+      },
+      {
+        "name": "Realism_Lora_By_Stable_Yogi_V2",
+        "filename": "Realism Lora By Stable Yogi V2.json",
+        "description": "Improved version of realism enhancement",
+        "trigger_words": ["realism v2", "photorealistic", "hyper realistic"],
+        "recommended_weight": "0.6-0.8",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["hyper-realistic", "detailed realism"],
+        "category": "realism",
+        "notes": "Stronger photorealism than V1, good for detailed portraits"
+      }
+    ],
+    "4step_optimization": [
+      {
+        "name": "DMD2_SDXL_4Step",
+        "filename": "dmd2_sdxl_4step_lora.safetensors",
+        "description": "4-step generation optimization for faster inference",
+        "trigger_words": ["4 step", "fast generation"],
+        "recommended_weight": "1.0",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["fast generation", "quick preview"],
+        "category": "optimization",
+        "notes": "Use this if you want 4-step fast generation, use at full weight (1.0)"
+      }
+    ],
+    "nsfw_adult_content": [
+      {
+        "name": "FluXXXv2",
+        "filename": "FluXXXv2.safetensors",
+        "description": "Explicit adult content generation",
+        "trigger_words": ["fluxxxx", "explicit", "nsfw"],
+        "recommended_weight": "0.7-0.95",
+        "compatible_models": ["Flux.1-dev"],
+        "use_cases": ["adult", "explicit", "nsfw"],
+        "category": "nsfw",
+        "content_rating": "Explicit 18+",
+        "notes": "Use only for adult content generation, includes NSFW specialization"
+      },
+      {
+        "name": "KREAnsfwv2",
+        "filename": "KREAnsfwv2.safetensors",
+        "description": "NSFW variant optimized for adult content",
+        "trigger_words": ["nsfw", "krea nsfw", "adult"],
+        "recommended_weight": "0.7-0.95",
+        "compatible_models": ["All Flux versions"],
+        "use_cases": ["adult", "nude", "explicit"],
+        "category": "nsfw",
+        "content_rating": "Explicit 18+",
+        "notes": "Community-created NSFW variant, good quality"
+      },
+      {
+        "name": "NSFW_UNLOCKED",
+        "filename": "NSFW_UNLOCKED.safetensors",
+        "description": "General adult content unlocker",
+        "trigger_words": ["nsfw", "unlocked", "adult"],
+        "recommended_weight": "0.6-0.9",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["adult", "general nsfw"],
+        "category": "nsfw",
+        "content_rating": "Explicit 18+",
+        "notes": "Broader application than specialized NSFW LoRAs"
+      },
+      {
+        "name": "Ahegao_SDXL",
+        "filename": "Ahegao_SDXL-000031.json",
+        "description": "Specific adult expression specialization",
+        "trigger_words": ["ahegao"],
+        "recommended_weight": "0.8-1.0",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["extreme adult content"],
+        "category": "nsfw_specialized",
+        "content_rating": "Explicit 18+ Extreme",
+        "notes": "Very specific use case, use as single LoRA"
+      },
+      {
+        "name": "Ana_V1",
+        "filename": "Ana_V1.json",
+        "description": "Character-specific adult variant",
+        "trigger_words": ["ana", "character"],
+        "recommended_weight": "0.7-0.9",
+        "compatible_models": ["All Flux"],
+        "use_cases": ["character-specific adult"],
+        "category": "nsfw",
+        "content_rating": "Explicit 18+",
+        "notes": "Character-specific LoRA for consistent adult content"
+      }
+    ]
+  },
+  "recommended_stacks": {
+    "portrait_professional": {
+      "name": "Professional Portrait Stack",
+      "description": "Balanced stack for professional portrait photography",
+      "loras": [
+        {
+          "name": "ultrafluxV1",
+          "weight": 0.7
+        },
+        {
+          "name": "fluxInstaGirlsV2",
+          "weight": 0.6
+        },
+        {
+          "name": "facebookQuality",
+          "weight": 0.5
+        }
+      ],
+      "total_influence": 1.8,
+      "recommended_for": ["professional", "magazine", "editorial"],
+      "expected_style": "Professional, polished, magazine-ready"
+    },
+    "style_enhancement": {
+      "name": "Style Enhancement Stack",
+      "description": "Focused on style and detail enhancement",
+      "loras": [
+        {
+          "name": "fluxInstaGirlsV2",
+          "weight": 0.8
+        },
+        {
+          "name": "DetailTweaker_SDXL",
+          "weight": 0.6
+        }
+      ],
+      "total_influence": 1.4,
+      "recommended_for": ["instagram", "fashion", "styled"],
+      "expected_style": "Stylized, detailed, fashion-forward"
+    },
+    "quality_maximum": {
+      "name": "Maximum Quality Stack",
+      "description": "High-quality output for premium results",
+      "loras": [
+        {
+          "name": "ultrafluxV1",
+          "weight": 0.9
+        },
+        {
+          "name": "facebookQuality",
+          "weight": 0.7
+        }
+      ],
+      "total_influence": 1.6,
+      "recommended_for": ["high-quality", "fine-art", "premium"],
+      "expected_style": "Premium quality, sharp, detailed"
+    },
+    "realism_focus": {
+      "name": "Photorealism Stack",
+      "description": "Optimized for maximum photorealism",
+      "loras": [
+        {
+          "name": "Realism_Lora_By_Stable_Yogi_V2",
+          "weight": 0.8
+        },
+        {
+          "name": "DetailTweaker_SDXL",
+          "weight": 0.5
+        }
+      ],
+      "total_influence": 1.3,
+      "recommended_for": ["photorealistic", "natural", "detailed"],
+      "expected_style": "Hyper-realistic, natural, detailed"
+    }
+  },
+  "metadata": {
+    "total_loras": 17,
+    "categories": [
+      "quality_enhancement",
+      "style_enhancement",
+      "detail_enhancement",
+      "realism_enhancement",
+      "4step_optimization",
+      "nsfw_adult_content"
+    ],
+    "recommended_stack_combinations": 4,
+    "notes": "This registry includes all LoRAs available in the FluxDype setup. Use recommended weights for best results. For NSFW content, ensure appropriate use case and audience restrictions.",
+    "last_updated": "2025-11-21",
+    "flux_compatibility": "All LoRAs tested with Flux.1-dev and Flux Kria models"
+  }
+}

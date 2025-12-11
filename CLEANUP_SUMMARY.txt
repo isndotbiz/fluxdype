@@ -1,0 +1,132 @@
+================================================================================
+ComfyUI Models Cleanup Summary
+Executed: 2025-12-10 00:04:31
+================================================================================
+
+CLEANUP RESULTS
+===============
+
+Total Files Removed: 11
+Total Space Freed: 101.72 GB
+All Moves Successful: YES (0 failures)
+
+Storage Impact:
+  Before Cleanup: 302.40 GB
+  After Cleanup:  200.68 GB
+  Space Freed:    101.72 GB (33.65% reduction)
+
+Backup Location: D:\workspace\fluxdype\models_removed_backup
+Backup Size:     101.72 GB
+
+Log File:        D:\workspace\fluxdype\cleanup_models.log
+
+
+DETAILED BREAKDOWN
+==================
+
+DIFFUSION MODELS REMOVED (6 files, 101.27 GB):
+  - unstableEvolution_Fp1622GB.safetensors       22.17 GB  (Duplicate NSFW)
+  - fluxNSFWUNLOCKED_v20FP16.safetensors         22.17 GB  (Duplicate NSFW)
+  - fluxMoja_v6Krea.safetensors                  22.17 GB  (Duplicate NSFW)
+  - flux1-dev-Q8_0.gguf                          11.84 GB  (CPU quantized, not needed on RTX 3090)
+  - hyperfluxDiversity_q80.gguf                  11.84 GB  (CPU quantized)
+  - iniverseMixSFWNSFW_f1dRealnsfwGuofengV2_937369.safetensors  11.08 GB (SDXL incompatible)
+
+LoRAs REMOVED (5 files, 467.42 MB):
+  - NSFW_master.safetensors                      164.00 MB (Redundant)
+  - FluXXXv2.safetensors                         135.44 MB (Redundant)
+  - KREAnsfwv2.safetensors                       130.42 MB (Redundant)
+  - NSFW_Flux_Petite-000002.safetensors          19.19 MB  (Redundant)
+  - FLUX Female Anatomy.safetensors              18.37 MB  (Redundant)
+
+
+BACKUP STRUCTURE
+================
+
+Location: D:\workspace\fluxdype\models_removed_backup\
+
+Folder structure:
+  models_removed_backup/
+    ├── Diffusion Models/        (6 files, 101.27 GB)
+    │   ├── flux1-dev-Q8_0.gguf
+    │   ├── fluxMoja_v6Krea.safetensors
+    │   ├── fluxNSFWUNLOCKED_v20FP16.safetensors
+    │   ├── hyperfluxDiversity_q80.gguf
+    │   ├── iniverseMixSFWNSFW_f1dRealnsfwGuofengV2_937369.safetensors
+    │   └── unstableEvolution_Fp1622GB.safetensors
+    └── LoRAs/                   (5 files, 467.42 MB)
+        ├── FLUX Female Anatomy.safetensors
+        ├── FluXXXv2.safetensors
+        ├── KREAnsfwv2.safetensors
+        ├── NSFW_Flux_Petite-000002.safetensors
+        └── NSFW_master.safetensors
+
+
+HOW TO RESTORE FILES
+====================
+
+If you need to restore any files from the backup:
+
+Option 1 - Restore Individual File:
+  1. Navigate to: D:\workspace\fluxdype\models_removed_backup\
+  2. Find the file you need (in either Diffusion Models/ or LoRAs/)
+  3. Copy it back to: D:\workspace\fluxdype\ComfyUI\models\<category>\
+  4. Restart ComfyUI server
+
+Option 2 - Restore All Files:
+  powershell -ExecutionPolicy Bypass -Command "Copy-Item -Path 'D:\workspace\fluxdype\models_removed_backup\*' -Destination 'D:\workspace\fluxdype\ComfyUI\models\' -Recurse -Force"
+
+Option 3 - Restore Specific Category:
+  # Restore diffusion models:
+  Copy-Item -Path 'D:\workspace\fluxdype\models_removed_backup\Diffusion Models\*' -Destination 'D:\workspace\fluxdype\ComfyUI\models\diffusion_models\' -Recurse -Force
+
+  # Restore LoRAs:
+  Copy-Item -Path 'D:\workspace\fluxdype\models_removed_backup\LoRAs\*' -Destination 'D:\workspace\fluxdype\ComfyUI\models\loras\' -Recurse -Force
+
+After restoring, restart ComfyUI server for changes to take effect:
+  .\start-comfy.ps1
+
+
+PERMANENT DELETION
+==================
+
+Once you've confirmed everything is working properly and want to permanently
+free up the disk space, you can delete the backup folder:
+
+  Remove-Item -Path 'D:\workspace\fluxdype\models_removed_backup' -Recurse -Force
+
+This is completely optional and safe only AFTER testing that ComfyUI works
+correctly without these models.
+
+
+NOTES
+=====
+
+1. Files were MOVED, not deleted. They can be fully recovered from backup.
+2. All files remain intact and unmodified in the backup folder.
+3. The original locations in ComfyUI/models/ have been cleaned.
+4. ComfyUI workflows may fail if they reference removed models - restore
+   those specific models if needed.
+5. Backup folder can be kept indefinitely as recovery mechanism.
+6. See cleanup_models.log for detailed execution log with timestamps.
+
+
+SCRIPT DETAILS
+==============
+
+Script Location: D:\workspace\fluxdype\cleanup_duplicate_models.ps1
+
+Usage:
+  # Preview what will be removed (no changes)
+  .\cleanup_duplicate_models.ps1 -WhatIf
+
+  # Execute cleanup with interactive confirmation
+  .\cleanup_duplicate_models.ps1
+
+  # Execute cleanup without asking for confirmation
+  .\cleanup_duplicate_models.ps1 -Confirm
+
+  # Use different backup location
+  .\cleanup_duplicate_models.ps1 -BackupPath "D:\alternative\backup\path"
+
+================================================================================

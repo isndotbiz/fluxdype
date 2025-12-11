@@ -1,0 +1,423 @@
+﻿{
+    "scan_date":  "2025-12-10 00:36:12",
+    "config_files":  [
+                         {
+                             "size_kb":  1.22,
+                             "path":  "C:\\Users\\Jdmal\\mcp-config.json",
+                             "name":  "mcp-config.json",
+                             "last_modified":  "2025-10-20 03:58:33"
+                         }
+                     ],
+    "ai_directories":  [
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI",
+                               "name":  "ComfyUI",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  4.975,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+                               "name":  "D--workspace-fluxdype-ComfyUI",
+                               "last_modified":  "2025-11-19 06:50:06",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI",
+                               "name":  "ComfyUI",
+                               "last_modified":  "2025-11-16 18:50:15",
+                               "size_gb":  0.026,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy",
+                               "name":  "comfy",
+                               "last_modified":  "2025-11-16 12:23:06",
+                               "size_gb":  0.022,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy_api",
+                               "name":  "comfy_api",
+                               "last_modified":  "2025-11-16 12:28:41",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy_api_nodes",
+                               "name":  "comfy_api_nodes",
+                               "last_modified":  "2025-11-16 12:30:20",
+                               "size_gb":  0.001,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy_config",
+                               "name":  "comfy_config",
+                               "last_modified":  "2025-11-16 12:30:19",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy_execution",
+                               "name":  "comfy_execution",
+                               "last_modified":  "2025-11-16 12:28:40",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy_extras",
+                               "name":  "comfy_extras",
+                               "last_modified":  "2025-11-16 12:30:19",
+                               "size_gb":  0.001,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\comfy\\comfy_types",
+                               "name":  "comfy_types",
+                               "last_modified":  "2025-11-16 12:30:13",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\tests-unit\\comfy_api_nodes_test",
+                               "name":  "comfy_api_nodes_test",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\tests-unit\\comfy_api_test",
+                               "name":  "comfy_api_test",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\tests-unit\\comfy_extras_test",
+                               "name":  "comfy_extras_test",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\tests-unit\\comfy_quant",
+                               "name":  "comfy_quant",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\tests-unit\\comfy_test",
+                               "name":  "comfy_test",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\Workspace\\WSL_Comfy",
+                               "name":  "WSL_Comfy",
+                               "last_modified":  "2025-10-14 10:40:29",
+                               "size_gb":  0.057,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI",
+                               "name":  "ComfyUI",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  4.975,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+                               "name":  "D--workspace-fluxdype-ComfyUI",
+                               "last_modified":  "2025-11-19 06:50:06",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI",
+                               "name":  "ComfyUI",
+                               "last_modified":  "2025-11-16 18:50:15",
+                               "size_gb":  0.026,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype",
+                               "name":  "D--workspace-fluxdype",
+                               "last_modified":  "2025-12-10 00:28:49",
+                               "size_gb":  0.018,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+                               "name":  "D--workspace-fluxdype-ComfyUI",
+                               "last_modified":  "2025-11-19 06:50:06",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\flux_kontext_test_20250622_095033",
+                               "name":  "flux_kontext_test_20250622_095033",
+                               "last_modified":  "2025-09-29 02:48:56",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\output\\flux_runway_content",
+                               "name":  "flux_runway_content",
+                               "last_modified":  "2025-09-16 18:31:13",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\temp\\flux_workflow",
+                               "name":  "flux_workflow",
+                               "last_modified":  "2025-09-16 18:31:13",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype",
+                               "name":  "D--workspace-fluxdype",
+                               "last_modified":  "2025-12-10 00:28:49",
+                               "size_gb":  0.018,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\.claude\\projects\\D--workspace-fluxdype-ComfyUI",
+                               "name":  "D--workspace-fluxdype-ComfyUI",
+                               "last_modified":  "2025-11-19 06:50:06",
+                               "size_gb":  0,
+                               "type":  "ComfyUI"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\flux_kontext_test_20250622_095033",
+                               "name":  "flux_kontext_test_20250622_095033",
+                               "last_modified":  "2025-09-29 02:48:56",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\output\\flux_runway_content",
+                               "name":  "flux_runway_content",
+                               "last_modified":  "2025-09-16 18:31:13",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\temp\\flux_workflow",
+                               "name":  "flux_workflow",
+                               "last_modified":  "2025-09-16 18:31:13",
+                               "size_gb":  0,
+                               "type":  "Flux"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\loras",
+                               "name":  "loras",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\loras",
+                               "name":  "loras",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\vae",
+                               "name":  "vae",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "VAE"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\vae_approx",
+                               "name":  "vae_approx",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "VAE"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\vae",
+                               "name":  "vae",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "VAE"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\vae_approx",
+                               "name":  "vae_approx",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "VAE"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\controlnet",
+                               "name":  "controlnet",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ControlNet"
+                           },
+                           {
+                               "path":  "C:\\Users\\Jdmal\\ComfyUI\\ComfyUI\\models\\controlnet",
+                               "name":  "controlnet",
+                               "last_modified":  "2025-11-16 12:19:35",
+                               "size_gb":  0,
+                               "type":  "ControlNet"
+                           },
+                           {
+                               "path":  "C:\\ProgramData\\miniconda3\\Lib\\site-packages\\colorama",
+                               "name":  "colorama",
+                               "last_modified":  "2025-10-21 11:23:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           },
+                           {
+                               "path":  "C:\\ProgramData\\miniconda3\\Lib\\site-packages\\colorama-0.4.6.dist-info",
+                               "name":  "colorama-0.4.6.dist-info",
+                               "last_modified":  "2025-10-21 11:23:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           },
+                           {
+                               "path":  "C:\\ProgramData\\miniconda3\\Lib\\site-packages\\colorama",
+                               "name":  "colorama",
+                               "last_modified":  "2025-10-21 11:23:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           },
+                           {
+                               "path":  "C:\\ProgramData\\miniconda3\\Lib\\site-packages\\colorama-0.4.6.dist-info",
+                               "name":  "colorama-0.4.6.dist-info",
+                               "last_modified":  "2025-10-21 11:23:35",
+                               "size_gb":  0,
+                               "type":  "LoRA"
+                           }
+                       ],
+    "total_ai_size_gb":  16.49,
+    "c_drive_free_gb":  249.95,
+    "venv_folders":  [
+                         {
+                             "path":  "C:\\Users\\Jdmal\\.hf-cli\\venv",
+                             "name":  "venv",
+                             "last_modified":  "2025-11-02 08:07:49",
+                             "size_gb":  0.033
+                         },
+                         {
+                             "path":  "C:\\Users\\Jdmal\\ComfyUI\\venv",
+                             "name":  "venv",
+                             "last_modified":  "2025-11-16 12:21:21",
+                             "size_gb":  4.949
+                         },
+                         {
+                             "path":  "C:\\Users\\Jdmal\\OneDrive\\Dev\\venv",
+                             "name":  "venv",
+                             "last_modified":  "2025-09-29 02:48:57",
+                             "size_gb":  0
+                         },
+                         {
+                             "path":  "C:\\Users\\Jdmal\\Workspace\\True_Nas\\.venv",
+                             "name":  ".venv",
+                             "last_modified":  "2025-10-15 01:07:53",
+                             "size_gb":  0.006
+                         },
+                         {
+                             "path":  "C:\\ProgramData\\miniconda3\\Lib\\venv",
+                             "name":  "venv",
+                             "last_modified":  "2025-10-21 11:23:35",
+                             "size_gb":  0.001
+                         }
+                     ],
+    "model_files":  [
+                        {
+                            "size_gb":  0.214,
+                            "name":  "Facebookq-fotos.safetensors",
+                            "size_mb":  219.22,
+                            "type":  "Unknown",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\Facebookq-fotos.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:56:56"
+                        },
+                        {
+                            "size_gb":  0.285,
+                            "name":  "Facebook_Quality_Photos.safetensors",
+                            "size_mb":  292.23,
+                            "type":  "Unknown",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\Facebook_Quality_Photos.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:56:14"
+                        },
+                        {
+                            "size_gb":  0.053,
+                            "name":  "ponyChar4ByStableYogi.uIsD.safetensors",
+                            "size_mb":  54.76,
+                            "type":  "Stable Diffusion",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\ponyChar4ByStableYogi.uIsD.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:54:59"
+                        },
+                        {
+                            "size_gb":  0.634,
+                            "name":  "realism20lora20by.cpW5.safetensors",
+                            "size_mb":  649.67,
+                            "type":  "LoRA",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\realism20lora20by.cpW5.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:55:25"
+                        },
+                        {
+                            "size_gb":  0.041,
+                            "name":  "realismLoraByStable.VvFC.safetensors",
+                            "size_mb":  42.47,
+                            "type":  "Stable Diffusion",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\realismLoraByStable.VvFC.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:54:48"
+                        },
+                        {
+                            "size_gb":  0.041,
+                            "name":  "Realism_Lora_By_Stable_yogi_SDXL8.1.safetensors",
+                            "size_mb":  42.47,
+                            "type":  "Stable Diffusion",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\Realism_Lora_By_Stable_yogi_SDXL8.1.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-26 23:51:32"
+                        },
+                        {
+                            "size_gb":  0.053,
+                            "name":  "superEyeDetailerBy.4EGS.safetensors",
+                            "size_mb":  54.76,
+                            "type":  "Unknown",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\superEyeDetailerBy.4EGS.safetensors",
+                            "extension":  ".safetensors",
+                            "last_modified":  "2025-10-27 01:54:55"
+                        },
+                        {
+                            "size_gb":  0.062,
+                            "name":  "4x_NickelbackFS_72000_G.pth",
+                            "size_mb":  63.97,
+                            "type":  "Unknown",
+                            "path":  "C:\\Users\\Jdmal\\Downloads\\4x_NickelbackFS_72000_G.pth",
+                            "extension":  ".pth",
+                            "last_modified":  "2025-10-27 04:14:22"
+                        }
+                    ],
+    "c_drive_used_gb":  214.95,
+    "categorization":  {
+                           "active":  [
+
+                                      ],
+                           "archive":  [
+
+                                       ],
+                           "obsolete":  [
+
+                                        ],
+                           "duplicate":  [
+
+                                         ]
+                       }
+}

@@ -1,0 +1,197 @@
+{
+  "1": {
+    "inputs": {
+      "image": "example.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Input Image",
+      "pos": [50, 50]
+    }
+  },
+  "2": {
+    "inputs": {
+      "upscale_model": "4x_NMKD-Siax_200k.pth",
+      "mode": "Linear",
+      "tile_size": 512,
+      "tile_overlap": 32,
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale 2x (1024->2048)",
+      "pos": [350, 50]
+    }
+  },
+  "3": {
+    "inputs": {
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Flux Krea Dev FP8",
+      "pos": [50, 250]
+    }
+  },
+  "4": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "Load CLIP Encoders",
+      "pos": [50, 350]
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt",
+      "pos": [350, 300]
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "blurry, low quality, distorted, artifacts, noise",
+      "clip": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt",
+      "pos": [350, 450]
+    }
+  },
+  "7": {
+    "inputs": {
+      "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+      "strength_model": 0.5,
+      "strength_clip": 0.5,
+      "model": [
+        "3",
+        0
+      ],
+      "clip": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Apply Turbo LoRA @ 0.5",
+      "pos": [50, 500]
+    }
+  },
+  "8": {
+    "inputs": {
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ImageToLatent",
+    "_meta": {
+      "title": "Image to Latent",
+      "pos": [700, 50]
+    }
+  },
+  "9": {
+    "inputs": {
+      "seed": 0,
+      "steps": 12,
+      "cfg": 2.2,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 0.3,
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "Refinement Sampling (12 steps, CFG 2.2, Denoise 0.3)",
+      "pos": [700, 250]
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE",
+      "pos": [700, 450]
+    }
+  },
+  "11": {
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode",
+      "pos": [1000, 250]
+    }
+  },
+  "12": {
+    "inputs": {
+      "filename_prefix": "upscale_enhanced",
+      "images": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Enhanced Image",
+      "pos": [1300, 250]
+    }
+  },
+  "13": {
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Output",
+      "pos": [1300, 350]
+    }
+  }
+}

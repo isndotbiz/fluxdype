@@ -1,0 +1,190 @@
+{
+  "workflow_info": {
+    "name": "Commercial Product Photography with Turbo LoRA",
+    "description": "Optimized workflow for high-end e-commerce and product photography. Generates premium product shots with professional studio lighting using Flux Kria FP8 with dual LoRA (Turbo Alpha + Product Photography). Includes 2x Ultimate SD Upscale for final 2048x2048 output.",
+    "version": "2.0",
+    "target_use_case": "Premium product photography for e-commerce/marketing",
+    "resolution": "1024x1024 (generation) -> 2048x2048 (upscaled)",
+    "quality_level": "Premium/Commercial",
+    "inference_time_seconds": "8-12 (including upscale)",
+    "steps": 10,
+    "cfg": 2.3,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "lora_1": {
+      "name": "FLUX.1-Turbo-Alpha.safetensors",
+      "strength": 0.7,
+      "purpose": "Fast high-quality generation"
+    },
+    "lora_2": {
+      "name": "ProductPhotographyLoRA or CommercialLoRA",
+      "strength": 0.65,
+      "purpose": "Professional product aesthetic"
+    },
+    "upscale": {
+      "method": "Ultimate SD Upscale",
+      "factor": "2x",
+      "output_resolution": "2048x2048",
+      "estimated_time_seconds": "4-6"
+    }
+  },
+  "prompt": {
+    "1": {
+      "inputs": {
+        "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "class_type": "UNETLoader",
+      "_meta": {
+        "title": "Load Flux Kria FP8 UNET"
+      }
+    },
+    "2": {
+      "inputs": {
+        "clip_name1": "clip_l.safetensors",
+        "clip_name2": "t5xxl_fp16.safetensors",
+        "type": "flux"
+      },
+      "class_type": "DualCLIPLoader",
+      "_meta": {
+        "title": "Load CLIP L + T5XXL Text Encoders"
+      }
+    },
+    "3": {
+      "inputs": {
+        "vae_name": "ae.safetensors"
+      },
+      "class_type": "VAELoader",
+      "_meta": {
+        "title": "Load VAE Encoder"
+      }
+    },
+    "4": {
+      "inputs": {
+        "text": "professional studio lighting, white background, product shot, e-commerce, shadows, highlights, stunning product photography, professional lighting setup, sharp focus, highly detailed, vibrant colors, masterpiece, best quality, cinematic composition, pristine condition, luxury product, premium materials, immaculate presentation",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Positive Prompt - Product Photography"
+      }
+    },
+    "5": {
+      "inputs": {
+        "text": "low quality, blurry, distorted, deformed, bad anatomy, watermark, text, logo, shadows, dark, overexposed, underexposed, cluttered background, amateur, cheap, damaged, wrinkled, dirty, noise, grain, compression artifacts",
+        "clip": ["2", 0]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "Negative Prompt"
+      }
+    },
+    "6": {
+      "inputs": {
+        "lora_name": "FLUX.1-Turbo-Alpha.safetensors",
+        "strength_model": 0.7,
+        "strength_clip": 0.7,
+        "model": ["1", 0],
+        "clip": ["2", 0]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Turbo LoRA - Strength 0.7"
+      }
+    },
+    "7": {
+      "inputs": {
+        "lora_name": "ProductPhotographyLoRA",
+        "strength_model": 0.65,
+        "strength_clip": 0.65,
+        "model": ["6", 0],
+        "clip": ["6", 1]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load Product Photography LoRA - Strength 0.65"
+      }
+    },
+    "8": {
+      "inputs": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      },
+      "class_type": "EmptyLatentImage",
+      "_meta": {
+        "title": "Initialize Latent Space (1024x1024)"
+      }
+    },
+    "9": {
+      "inputs": {
+        "seed": 0,
+        "steps": 10,
+        "cfg": 2.3,
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "denoise": 1.0,
+        "model": ["7", 0],
+        "positive": ["4", 0],
+        "negative": ["5", 0],
+        "latent_image": ["8", 0]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "Product Photography Sampler - 10 Steps, CFG 2.3, DPM++ 2M"
+      }
+    },
+    "10": {
+      "inputs": {
+        "samples": ["9", 0],
+        "vae": ["3", 0]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode to Image (1024x1024)"
+      }
+    },
+    "11": {
+      "inputs": {
+        "upscale_model": "4x_NMKD-Siax_200k.pth"
+      },
+      "class_type": "UpscaleModelLoader",
+      "_meta": {
+        "title": "Load 4x Upscale Model"
+      }
+    },
+    "12": {
+      "inputs": {
+        "image": ["10", 0],
+        "model": ["7", 0],
+        "positive": ["4", 0],
+        "negative": ["5", 0],
+        "vae": ["3", 0],
+        "upscale_model": ["11", 0],
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "steps": 8,
+        "tile_width": 512,
+        "tile_height": 512,
+        "denoise": 0.25,
+        "upscale_by": 2,
+        "mode": "Linear",
+        "seed": 0
+      },
+      "class_type": "UltimateSDUpscale",
+      "_meta": {
+        "title": "Ultimate SD Upscale 2x (1024->2048)"
+      }
+    },
+    "13": {
+      "inputs": {
+        "filename_prefix": "commercial_product_turbo_",
+        "images": ["12", 0]
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Final Upscaled Product Image (2048x2048)"
+      }
+    }
+  }
+}
